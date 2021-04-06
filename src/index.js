@@ -15,6 +15,8 @@ const createTodoList = () => {
       priority: 'low',
     },
   ]
+  
+
   const row = document.createElement('div');
   row.classList.add('row');
 
@@ -24,33 +26,15 @@ const createTodoList = () => {
 
   let todoTask = document.createElement('ul');
   todoTask.classList.add('list-group');
-  for (let i = 0; i < tasks.length; i += 1) {
-    todoTask.innerHTML += `
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-between">
-          <input
-            class="form-check-input me-1"
-            type="checkbox"
-            value=""
-            aria-label="..."
-          />
-          <h5 class="mb-1">${tasks[i].title}</h5>
-          <p>${tasks[i].desc}</p>
-          <small>${tasks[i].date}</small>
-          <input
-            class="btn btn-primary"
-            type="button"
-            value="Delete"
-          />
-        </div>
-      </div>
-    </li>
-    `;
-  }
+  
+
+  todoTask.innerHTML = '<ul>' + tasks.map(function (task) {
+    return '<li>' + task + '</li>';
+  }).join('') + '</ul>';
+
+  
 
   row.appendChild(col, tasks);
-  console.log(todoTask);
   col.appendChild(todoTask);
 
   return row;
