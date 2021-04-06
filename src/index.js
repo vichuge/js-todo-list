@@ -29,7 +29,7 @@ const createTodoList = () => {
   
 
   todoTask.innerHTML = '<ul>' + tasks.map(function (task) {
-    return '<li>' + task + '</li>';
+    return '<li>' + Object.values(task) + '</li>';
   }).join('') + '</ul>';
 
   
