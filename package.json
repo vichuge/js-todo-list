@@ -2,7 +2,7 @@
   "name": "js-todo-list",
   "version": "1.0.0",
   "description": "Todo lists are a staple in beginning webdev tutorials because they can be very simple. There is, however, a lot of room for improvement and many features that can be added.",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/vichuge/js-todo-list/issues"
   },
-  "homepage": "https://github.com/vichuge/js-todo-list#readme"
+  "homepage": "https://github.com/vichuge/js-todo-list#readme",
+  "devDependencies": {
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
