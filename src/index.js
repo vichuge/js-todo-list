@@ -1,6 +1,16 @@
 import _ from 'lodash';
 import './style.css';
 
+class Task {
+  constructor(title, description, dueDate, priority) {
+    this.title = title;
+    this.desc = description;
+    this.date = dueDate;
+    this.priority = priority;
+    this.check = false;
+  }
+}
+
 const tasks = [
   {
     title: 'title1',
@@ -16,19 +26,12 @@ const tasks = [
     priority: 'low',
     check: true,
   },
+  new Task('title3','description3','07 / 07 / 2007', 'high'),
 ];
 
-class TodoList {
-  constructor(title, description, dueDate, priority) {
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.priority = priority;
-  }
-}
-
-
 const createTodoList = () => {
+  let container = document.getElementById('container');
+  container.innerHTML = '';
   const row = document.createElement('div');
   row.classList.add('row');
 
@@ -37,7 +40,6 @@ const createTodoList = () => {
 
   let todoTask = document.createElement('ul');
   todoTask.classList.add('todoTask');
-
 
   todoTask.innerHTML += tasks.map((task) => {
     return `
@@ -69,7 +71,9 @@ const createTodoList = () => {
   //del.addEventListener('click', () => { deleteTask(); });
   row.appendChild(col, tasks);
   col.appendChild(todoTask);
-  return row;
+
+  
+  container.appendChild(row);
 }
 
 
@@ -77,7 +81,7 @@ const addTask = () => {
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
   const dueDate = document.getElementById('dueDate').value;
-  const priority = document.getElementById('priority');
+  const priority = document.getElementById('prioritySelect').value;
 
   const errors = document.getElementById('error');
   errors.innerHTML = '';
@@ -93,12 +97,8 @@ const addTask = () => {
     errors.innerHTML += ' Date can\'t be blank';
     return;
   }
-  
- const closeModal = () => {
-    document.getElementById('close').click();
-  }
 
-  const todo = new TodoList(title, description, dueDate);
+  const todo = new Task(title, description, dueDate, priority);
   tasks.push(todo);
   console.log(tasks);
   createTodoList();
@@ -106,10 +106,12 @@ const addTask = () => {
   closeModal();
 }
 
-const init = () => {
-  let container = document.getElementById('container');
+const closeModal = () => {
+  document.getElementById('close').click();
+}
 
-  container.appendChild(createTodoList());
+const init = () => {
+  createTodoList();
 
   let create = document.getElementById('create');
   create.addEventListener('click', () => { addTask(); });
@@ -119,8 +121,6 @@ const init = () => {
 }
 
 init();
-
-
 
 function emptyInputs() {
   document.getElementById('title').value = '';
