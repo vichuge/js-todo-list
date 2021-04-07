@@ -12,20 +12,8 @@ class Task {
 }
 
 const tasks = [
-  {
-    title: 'title1',
-    desc: 'description1',
-    date: '05 / 05 / 2005',
-    priority: 'high',
-    check: false,
-  },
-  {
-    title: 'title2',
-    desc: 'description2',
-    date: '06 / 06 / 2006',
-    priority: 'low',
-    check: true,
-  },
+  new Task('title1','description1','05 / 05 / 2005', 'high'),
+  new Task('title2','description2','06 / 06 / 2006', 'low'),
   new Task('title3','description3','07 / 07 / 2007', 'high'),
 ];
 
@@ -41,27 +29,7 @@ const createTodoList = () => {
   let todoTask = document.createElement('ul');
   todoTask.classList.add('todoTask');
 
-  todoTask.innerHTML += tasks.map((task) => {
-    /*return `
-    <li class="list-group-item ${task.priority === 'low' ? 'bgreen' : task.priority === 'medium' ? 'byellow' : task.priority === 'high' ? 'bred' : ''}">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-between">
-          <input
-            class="form-check-input me-1"
-            type="checkbox"
-          />
-          <h5 class="mb-1">${task.title}</h5>
-          <p>${task.desc}</p>
-          <small>${task.date}</small>
-          <input
-            class="btn btn-primary"
-            type="button"
-            value="Delete"
-            id="deleteid"
-          />
-        </div>
-      </div>
-    </li>`;*/
+  todoTask.innerHTML += tasks.map((task, index) => {
     const li = document.createElement('li');
     li.classList.add('list-group-item');
     task.priority === 'low' ? li.classList.add('bgreen') : task.priority === 'medium' ? li.classList.add('byellow') : task.priority === 'high' ? li.classList.add('bred') : '';
@@ -96,7 +64,7 @@ const createTodoList = () => {
     input2.type ='button';
     input2.id = 'deleteid';
     input2.value = 'Delete';
-    input2.addEventListener('click', () => { deleteTask(); });
+    input2.addEventListener('click', () => { deleteTask(index); });
 
 
     div2.appendChild(input1);
@@ -107,7 +75,6 @@ const createTodoList = () => {
     div1.appendChild(div2);
     li.appendChild(div1);
     container.appendChild(li);
-    console.log(container);
   }).join('');
 
   //const del = document.getElementById('deleteid');
@@ -143,7 +110,6 @@ const addTask = () => {
 
   const todo = new Task(title, description, dueDate, priority);
   tasks.push(todo);
-  console.log(tasks);
   createTodoList();
   emptyInputs();
   closeModal();
@@ -173,7 +139,6 @@ function emptyInputs() {
 
 const deleteTask = (id) => {
   tasks.splice(id, 1);
-  console.log(id);
   createTodoList();
 }
 
