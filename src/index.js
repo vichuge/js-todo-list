@@ -36,10 +36,8 @@ const createTodoList = () => {
   col.classList.add('col-12');
 
   let todoTask = document.createElement('ul');
-  todoTask.classList.add('list-group');
+  todoTask.classList.add('todoTask');
 
-  // document.getElementsByClassName('todoTask').innerHTML = '';
-  // const d = document.getElementById('todoTask');
 
   todoTask.innerHTML += tasks.map((task) => {
     return `
@@ -56,7 +54,7 @@ const createTodoList = () => {
           <p>${task.desc}</p>
           <small>${task.date}</small>
           <input
-            onclick="deleteTask"
+            
             class="btn btn-primary"
             type="button"
             value="Delete"
@@ -74,46 +72,12 @@ const createTodoList = () => {
   return row;
 }
 
-const init = () => {
-  let container = document.getElementById('container');
-
-  container.appendChild(createTodoList());
-
-  let a = document.getElementById('test');
-  const btn = document.createElement('button');
-  btn.classList.add('btn');
-  btn.classList.add('btn-primary');
-  btn.innerHTML = 'hi!';
-  btn.addEventListener('click', () => { addTask(); });
-  a.appendChild(btn);
-}
 
 const addTask = () => {
-  console.log('yeey!');
-}
-
-const deleteTask = () => {
-  console.log('delete');
-}
-init();
-
-
-
-// function emptyInputs() {
-//   document.getElementById('title').value = '';
-//   document.getElementById('description').value = '';
-//   document.getElementById('dueDate').value = '';
-// }
-
-// closeModal = () => {
-//   document.getElementById('close').click();
-// }
-
-const addProject = () => {
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
   const dueDate = document.getElementById('dueDate').value;
-  // const priority = document.getElementById('priority');
+  const priority = document.getElementById('priority');
 
   const errors = document.getElementById('error');
   errors.innerHTML = '';
@@ -130,19 +94,44 @@ const addProject = () => {
     return;
   }
   
+ const closeModal = () => {
+    document.getElementById('close').click();
+  }
 
   const todo = new TodoList(title, description, dueDate);
   tasks.push(todo);
   console.log(tasks);
-  // createTodoList();
-  // emptyInputs();
-  // closeModal();
+  createTodoList();
+  emptyInputs();
+  closeModal();
 }
 
-// function deleteBook(id) {
-//   myLibrary.splice(id, 1);
-//   listBooks();
-// }
+const init = () => {
+  let container = document.getElementById('container');
+
+  container.appendChild(createTodoList());
+
+  let create = document.getElementById('create');
+  create.addEventListener('click', () => { addTask(); });
+
+  let deleteid = document.getElementById('deleteid');
+  deleteid.addEventListener('click', () => {deleteTask(id); });
+}
+
+init();
+
+
+
+function emptyInputs() {
+  document.getElementById('title').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('dueDate').value = '';
+}
+
+const deleteTask = (id) => {
+  tasks.splice(id, 1);
+  createTodoList();
+}
 
 // function readBook(id) {
 //   myLibrary[id].read = !myLibrary[id].read;
