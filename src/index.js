@@ -18,6 +18,16 @@ const tasks = [
   },
 ];
 
+class TodoList {
+  constructor(title, description, dueDate, priority) {
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
+  }
+}
+
+
 const createTodoList = () => {
   const row = document.createElement('div');
   row.classList.add('row');
@@ -27,6 +37,9 @@ const createTodoList = () => {
 
   let todoTask = document.createElement('ul');
   todoTask.classList.add('list-group');
+
+  // document.getElementsByClassName('todoTask').innerHTML = '';
+  // const d = document.getElementById('todoTask');
 
   todoTask.innerHTML += tasks.map((task) => {
     return `
@@ -59,6 +72,59 @@ const createTodoList = () => {
 
 const init = () => {
   let container = document.getElementById('container');
+
   container.appendChild(createTodoList());
 }
 init();
+
+
+
+// function emptyInputs() {
+//   document.getElementById('title').value = '';
+//   document.getElementById('description').value = '';
+//   document.getElementById('dueDate').value = '';
+// }
+
+// closeModal = () => {
+//   document.getElementById('close').click();
+// }
+
+const addProject = () => {
+  const title = document.getElementById('title').value;
+  const description = document.getElementById('description').value;
+  const dueDate = document.getElementById('dueDate').value;
+  // const priority = document.getElementById('priority');
+
+  const errors = document.getElementById('error');
+  errors.innerHTML = '';
+  if (title === '') {
+    errors.innerHTML += 'Title can\'t be blank';
+    return;
+  }
+  if (description === '') {
+    errors.innerHTML += 'Description can\'t be blank';
+    return;
+  }
+  if (dueDate === '') {
+    errors.innerHTML += ' Date can\'t be blank';
+    return;
+  }
+  
+
+  const todo = new TodoList(title, description, dueDate);
+  tasks.push(todo);
+  console.log(tasks);
+  // createTodoList();
+  // emptyInputs();
+  // closeModal();
+}
+
+// function deleteBook(id) {
+//   myLibrary.splice(id, 1);
+//   listBooks();
+// }
+
+// function readBook(id) {
+//   myLibrary[id].read = !myLibrary[id].read;
+//   listBooks();
+// }
