@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import './style.css';
 
 const createTodoList = () => {
   const tasks = [
@@ -26,13 +27,30 @@ const createTodoList = () => {
 
   let todoTask = document.createElement('ul');
   todoTask.classList.add('list-group');
-  
 
-  todoTask.innerHTML = '<ul>' + tasks.map(function (task) {
-    return '<li>' + Object.values(task) + '</li>';
-  }).join('') + '</ul>';
-
-  
+  todoTask.innerHTML += tasks.map((task) => {
+    return `
+    <li class="list-group-item ${task.priority === 'low' ? 'bgreen' : task.priority === 'medium' ? 'byellow' : task.priority === 'high' ? 'bred' : ''}">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-between">
+          <input
+            class="form-check-input me-1"
+            type="checkbox"
+            value=""
+            aria-label="..."
+          />
+          <h5 class="mb-1">${task.title}</h5>
+          <p>${task.desc}</p>
+          <small>${task.date}</small>
+          <input
+            class="btn btn-primary"
+            type="button"
+            value="Delete"
+          />
+        </div>
+      </div>
+    </li>`;
+  }).join('');
 
   row.appendChild(col, tasks);
   col.appendChild(todoTask);
@@ -74,18 +92,12 @@ const createTodoList = () => {
 }*/
 
 const init = () => {
-  //console.log('enter init');
   let container = document.getElementById('container');
   container.appendChild(createTodoList());
 }
 
 function component() {
-  const element = document.createElement('div');
   init();
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
 }
 
-document.body.appendChild(component());
+component();
