@@ -73,6 +73,7 @@ const createTodoList = () => {
     div2.classList.add('col-12');
     div2.classList.add('d-flex');
     div2.classList.add('justify-content-between');
+    
 
     const input1 = document.createElement('input');
     input1.classList.add('form-check-input');
@@ -81,19 +82,22 @@ const createTodoList = () => {
 
     const h5 = document.createElement('h5');
     h5.classList.add('mb-1');
-    h5.innerHTML = task.title;
+    h5.innerText = task.title;
 
     const p = document.createElement('p');
-    p.innerHTML = task.desc;
+    p.innerText = task.desc;
 
     const small = document.createElement('small');
-    small.innerHTML = task.date;
+    small.innerText = task.date;
 
     const input2 =document.createElement('input');
     input2.classList.add('btn');
     input2.classList.add('btn-primary');
     input2.type ='button';
     input2.id = 'deleteid';
+    input2.value = 'Delete';
+    input2.addEventListener('click', () => { deleteTask(); });
+
 
     div2.appendChild(input1);
     div2.appendChild(h5);
@@ -102,9 +106,8 @@ const createTodoList = () => {
     div2.appendChild(input2);
     div1.appendChild(div2);
     li.appendChild(div1);
-    console.log(li);
-    return li;
-    //return `<li>hi there! ${task.title}</li>`;
+    container.appendChild(li);
+    console.log(container);
   }).join('');
 
   //const del = document.getElementById('deleteid');
@@ -170,6 +173,7 @@ function emptyInputs() {
 
 const deleteTask = (id) => {
   tasks.splice(id, 1);
+  console.log(id);
   createTodoList();
 }
 
