@@ -1,5 +1,3 @@
-
-
 const createTodoList = (tasks) => {
     let container = document.getElementById('container');
     container.innerHTML = '';

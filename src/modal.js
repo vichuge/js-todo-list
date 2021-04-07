@@ -1,5 +1,4 @@
 import Task from './Task.js';
-import Project from './Project.js';
 import createTodoList from './list.js';
 
 const addTask = (project) => {
@@ -40,4 +39,7 @@ const closeModal = () => {
     document.getElementById('close').click();
 }
 
-export default addTask;
+const buildModal = () => {
+    console.log('build modal');
+}
+export default { addTask, buildModal };
