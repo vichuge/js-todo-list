@@ -43,15 +43,19 @@ const createTodoList = () => {
           <p>${task.desc}</p>
           <small>${task.date}</small>
           <input
+            onclick="deleteTask"
             class="btn btn-primary"
             type="button"
             value="Delete"
+            id="deleteid"
           />
         </div>
       </div>
     </li>`;
   }).join('');
 
+  //const del = document.getElementById('deleteid');
+  //del.addEventListener('click', () => { deleteTask(); });
   row.appendChild(col, tasks);
   col.appendChild(todoTask);
   return row;
@@ -60,5 +64,21 @@ const createTodoList = () => {
 const init = () => {
   let container = document.getElementById('container');
   container.appendChild(createTodoList());
+
+  let a = document.getElementById('test');
+  const btn = document.createElement('button');
+  btn.classList.add('btn');
+  btn.classList.add('btn-primary');
+  btn.innerHTML = 'hi!';
+  btn.addEventListener('click', () => { addTask(); });
+  a.appendChild(btn);
+}
+
+const addTask = () => {
+  console.log('yeey!');
+}
+
+const deleteTask = () => {
+  console.log('delete');
 }
 init();
