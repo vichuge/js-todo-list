@@ -4,7 +4,7 @@ import './style.css';
 import Task from './Task.js';
 import Project from './Project.js';
 
-import createTodoList from './list.js';
+import lists from './list.js';
 import funcs from './modal.js';
 
 const init = () => {
@@ -14,7 +14,7 @@ const init = () => {
   project.addElement(new Task('title1','description1','05 / 05 / 2005', 'high'));
   project.addElement(new Task('title2','description2','06 / 06 / 2006', 'low'));
   //console.log(project);
-  createTodoList(project);
+  lists.createTodoList(project);
   let createTask = document.getElementById('createTask');
   createTask.addEventListener('click', () => { funcs.addTask(project); });
 

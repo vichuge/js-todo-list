@@ -16,11 +16,20 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="list mb-4" id="container">
-    </div>
-
-    <div class="container" id="modal">
-      <!-- Button trigger modal -->
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-2">
+        <div class="row mb-4">
+          <div class="col-12">
+            <h2>All Projects</h2>
+        <ul class="list-group" id="projectsList">
+          <li class="list-group-item">Project 1</li>
+        </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <!-- Button trigger modal -->
       <div class="row mb-3">
         <div class="col-12">
           <button
@@ -44,10 +53,25 @@
           >
             Add a new project
           </button>
+        </div>
+      </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-1">
+        <div class="vl"></div>
+      </div>
+      <div class="col-8">
+        <h2>Project: Name</h2>
+        <div class="list mb-4" id="container">
+        </div>
+      </div>
+    </div>
+    
 
-         
-
-
+    <div class="container" id="modal">
+      
       <!-- Modal -->
       <div
         class="modal fade"
@@ -198,7 +222,7 @@
           </div>
         </div>
       </div>
-
+      </div>
     </div>
 
     <script src="main.js"></script>
@@ -217,6 +241,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     -->
 
-    
   </body>
 </html>
