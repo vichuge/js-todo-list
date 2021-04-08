@@ -29,7 +29,20 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Add Project Details
+            Add a new task
+          </button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-12">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal2"
+          >
+            Add a new project
           </button>
         </div>
       </div>
@@ -46,7 +59,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-                Enter Project information
+                Enter the task information
               </h5>
               <button
                 type="button"
@@ -115,7 +128,89 @@
           </div>
         </div>
       </div>
-      
+
+      <!-- Modal 2-->
+      <div
+        class="modal fade"
+        id="exampleModal2"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Enter the project information
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                id="close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <p class="error" id="error"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 mb-2">
+                  <label for="title">Title</label>
+                  <input type="text" name="title" id="title" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 mb-2">
+                  <label for="description">Description</label>
+                  <textarea
+                    class="form-control"
+                    placeholder="Add description here"
+                    id="description"
+                    name="description"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <label for="dueDate">DueDate</label>
+                  <input type="date" id="dueDate" name="dueDate" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 mt-3">
+                  <select class="form-select" aria-label="Default select example" id="prioritySelect">
+                    <option value ="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                
+                type="button"
+                class="btn btn-primary"
+                id="create"
+              >
+                Add Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <script src="main.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
