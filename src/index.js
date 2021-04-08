@@ -15,6 +15,7 @@ const init = () => {
   project.addElement(new Task('title2','description2','06 / 06 / 2006', 'low'));
   //console.log(project);
   lists.createTodoList(project);
+  lists.createProjectsList(projects);
   let createTask = document.getElementById('createTask');
   createTask.addEventListener('click', () => { funcs.addTask(project); });
 

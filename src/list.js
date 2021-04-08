@@ -1,6 +1,13 @@
-const funcs = {
-    createProjectsList() {
-
+const lists = {
+    createProjectsList(list) {
+        let ul = document.getElementById('projectsList');
+        ul.innerHTML = '';
+        const mappy= list.map((project) => {
+            const li = document.createElement('li');
+            li.classList.add('list-group-item');
+            li.innerHTML = project.title;
+            ul.appendChild(li);
+        }).join('');
     },
     createTodoList(tasks) {
         let container = document.getElementById('container');
@@ -14,7 +21,7 @@ const funcs = {
         let todoTask = document.createElement('ul');
         todoTask.classList.add('todoTask');
     
-        todoTask.innerHTML += tasks.list.map((task, index) => {
+        const mappy = tasks.list.map((task, index) => {
             const li = document.createElement('li');
             li.classList.add('list-group-item');
             task.priority === 'low' ? li.classList.add('bgreen') : task.priority === 'medium' ? li.classList.add('byellow') : task.priority === 'high' ? li.classList.add('bred') : '';
@@ -50,8 +57,7 @@ const funcs = {
             input2.id = 'deleteid';
             input2.value = 'Delete';
             input2.addEventListener('click', () => { deleteTask(tasks, index); });
-    
-    
+
             div2.appendChild(input1);
             div2.appendChild(h5);
             div2.appendChild(p);
@@ -59,7 +65,7 @@ const funcs = {
             div2.appendChild(input2);
             div1.appendChild(div2);
             li.appendChild(div1);
-            container.appendChild(li);
+            todoTask.appendChild(li);
         }).join('');
         
         row.appendChild(col, tasks.list);
@@ -72,7 +78,7 @@ const funcs = {
 
 const deleteTask = (project,id) => {
     project.list.splice(id, 1);
-    createTodoList(project);
+    lists.createTodoList(project);
 }
 
-export default funcs;
+export default lists;

@@ -1,5 +1,5 @@
 import Task from './Task.js';
-import createTodoList from './list.js';
+import lists from './list.js';
 import Project from './Project.js';
 
 const funcs = {
@@ -26,7 +26,7 @@ const funcs = {
 
         const elem = new Task(title, description, dueDate, priority);
         project.addElement(elem);
-        createTodoList(project);
+        lists.createTodoList(project);
         emptyInputs();
         closeModal();
     },
@@ -47,9 +47,10 @@ const funcs = {
 
         const elem = new Project(title, description);
         projects.push(elem);
-        console.log(projects);
+        //console.log(projects);
         emptyInputs();
         closeModal2();
+        lists.createProjectsList(projects);
     },
     buildModal() {
         
@@ -268,7 +269,7 @@ const funcs = {
         div2.appendChild(div19);
        
 
-        console.log(div2);
+        //console.log(div2);
         return div2;
 
     }
