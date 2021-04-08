@@ -42,4 +42,4 @@ const closeModal = () => {
 const buildModal = () => {
     console.log('build modal');
 }
-export default { addTask, buildModal };
+export default addTask;

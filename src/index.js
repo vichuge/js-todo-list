@@ -5,7 +5,8 @@ import Task from './Task.js';
 import Project from './Project.js';
 
 import createTodoList from './list.js';
-import { addTask, buildModal } from './modal.js';
+import addTask from './modal.js';
+import buildModal from './modal.js';
 
 const projects = [];
 
