@@ -57,9 +57,7 @@ const createTodoList = (tasks) => {
         li.appendChild(div1);
         container.appendChild(li);
     }).join('');
-
-    //const del = document.getElementById('deleteid');
-    //del.addEventListener('click', () => { deleteTask(); });
+    
     row.appendChild(col, tasks.list);
     col.appendChild(todoTask);
 
