@@ -121,7 +121,7 @@
                 
                 type="button"
                 class="btn btn-primary"
-                id="create"
+                id="createTask"
               >
                 Add Task
               </button>
@@ -152,48 +152,32 @@
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                id="close"
+                id="close2"
               ></button>
             </div>
             <div class="modal-body">
               <div class="row">
                 <div class="col-12">
-                  <p class="error" id="error"></p>
+                  <p class="error2" id="error2"></p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-12 mb-2">
-                  <label for="title">Title</label>
-                  <input type="text" name="title" id="title" />
+                  <label for="title2">Title</label>
+                  <input type="text" name="title2" id="title2" />
                 </div>
               </div>
               <div class="row">
                 <div class="col-12 mb-2">
-                  <label for="description">Description</label>
+                  <label for="description2">Description</label>
                   <textarea
                     class="form-control"
                     placeholder="Add description here"
-                    id="description"
-                    name="description"
+                    id="description2"
+                    name="description2"
                   ></textarea>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-12">
-                  <label for="dueDate">DueDate</label>
-                  <input type="date" id="dueDate" name="dueDate" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 mt-3">
-                  <select class="form-select" aria-label="Default select example" id="prioritySelect">
-                    <option value ="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                  </select>
-                </div>
-              </div>
-            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -206,7 +190,7 @@
                 
                 type="button"
                 class="btn btn-primary"
-                id="create"
+                id="createProject"
               >
                 Add Project
               </button>
@@ -217,50 +201,6 @@
 
     </div>
 
-
-
-
-    <button id="f1" class="btn btn-primary">Add Project</button>
-    <form id="form1" style="display: none">
-
-    <div class="row mt-3">
-      <div class="col-12 mb-2">
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 mb-2">
-        <label for="description">Description</label>
-        <textarea
-          class="form-control"
-          placeholder="Add description here"
-          id="description"
-          name="description"
-        ></textarea>
-      </div>
-    </div>
-    
-      <button
-        type="button"
-        class="btn btn-secondary"
-        data-bs-dismiss="modal"
-      >
-        Close
-      </button>
-      <button
-        
-        type="button"
-        class="btn btn-primary"
-        id="create"
-      >
-        Add Task
-      </button>
-   
-    </form>
-
-
-    
     <script src="main.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
