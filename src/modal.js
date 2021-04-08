@@ -47,7 +47,6 @@ const funcs = {
 
         const elem = new Project(title, description);
         projects.push(elem);
-        //console.log(projects);
         emptyInputs();
         closeModal2();
         lists.createProjectsList(projects);
@@ -57,7 +56,6 @@ const funcs = {
         const div2 = document.createElement('div');
         div2.setAttribute('id', 'modal');
         div2.classList.add('container');
-        
         
         const div3 = document.createElement('div');
         div3.classList.add("row");
@@ -269,7 +267,7 @@ const funcs = {
         div2.appendChild(div19);
        
 
-        //console.log(div2);
+        console.log(div2);
         return div2;
 
     }
