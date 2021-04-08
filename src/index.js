@@ -19,7 +19,14 @@ const init = () => {
   createTodoList(project);
   let create = document.getElementById('create');
   create.addEventListener('click', () => { addTask(project); });
-  buildModal();
+  // buildModal();
+
+  let f1 = document.getElementById('f1').addEventListener('click', () => {
+    document.getElementById('form1').style.display = 'block';
+  });
 }
+
+
+
 
 init();
