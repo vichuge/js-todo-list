@@ -29,10 +29,11 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            Add Project Details
+            Add Task Details
           </button>
-        </div>
-      </div>
+
+         
+
 
       <!-- Modal -->
       <div
@@ -109,14 +110,62 @@
                 class="btn btn-primary"
                 id="create"
               >
-                Add Project
+                Add Task
               </button>
             </div>
           </div>
         </div>
+        
+          
+        </div>
       </div>
       
     </div>
+
+
+
+
+    <button id="f1" class="btn btn-primary">Add Project</button>
+    <form id="form1" style="display: none">
+
+    <div class="row mt-3">
+      <div class="col-12 mb-2">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mb-2">
+        <label for="description">Description</label>
+        <textarea
+          class="form-control"
+          placeholder="Add description here"
+          id="description"
+          name="description"
+        ></textarea>
+      </div>
+    </div>
+    
+      <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal"
+      >
+        Close
+      </button>
+      <button
+        
+        type="button"
+        class="btn btn-primary"
+        id="create"
+      >
+        Add Task
+      </button>
+   
+    </form>
+
+
+    
     <script src="main.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
