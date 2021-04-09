@@ -57,26 +57,6 @@ const funcs = {
         div2.setAttribute('id', 'modal');
         div2.classList.add('container');
         
-        const div3 = document.createElement('div');
-        div3.classList.add("row");
-        div3.classList.add("mb-3");
-
-        const div4 = document.createElement('div');
-        div4.classList.add('col-12');
-
-        const button1 = document.createElement('button');
-        button1.classList.add('btn');
-        button1.classList.add('btn-primary');
-        button1.setAttribute("data-bs-toggle","modal");
-        button1.setAttribute("data-bs-target","modal");
-        button1.innerHTML = 'Add a new task';
-        button1.addEventListener('click', () => { deleteTask(tasks, index); });
-
-        div4.appendChild(button1);
-        div3.appendChild(div4);
-        div2.appendChild(div3);
-        
-
         
 
         const div5 = document.createElement('div');
@@ -112,10 +92,6 @@ const funcs = {
 
         div8.appendChild(h5);
         div8.appendChild(button2);
-        div7.appendChild(div8);
-        div6.appendChild(div7);
-        div5.appendChild(div6);
-
 
         
         const div9 = document.createElement('div');
@@ -134,11 +110,16 @@ const funcs = {
         div11.appendChild(p1);
         div10.appendChild(div11);
         div9.appendChild(div10);
+        
+    
     
         
         const div12 = document.createElement('div');
         div12.classList.add("row");
-        div12.classList.add("mb-2");   
+
+        const div21 = document.createElement('div');
+        div21.classList.add("col-12");
+        div21.classList.add("mb-2");   
         
 
         const label1 = document.createElement('label');
@@ -151,8 +132,10 @@ const funcs = {
         input2.name = 'title';
         
         
-        div12.appendChild(label1);
-        div12.appendChild(input2);
+        div21.appendChild(label1);
+        div21.appendChild(input2);
+        div12.appendChild(div21);
+        div9.appendChild(div12);
         
         
 
@@ -176,7 +159,7 @@ const funcs = {
         div14.appendChild(label2);
         div14.appendChild(textarea1);
         div13.appendChild(div14);
-    
+        div9.appendChild(div13);
         
 
 
@@ -198,6 +181,7 @@ const funcs = {
         div16.appendChild(label3);
         div16.appendChild(input1);
         div15.appendChild(div16);
+        div9.appendChild(div15);
            
         
         const div17 = document.createElement('div');
@@ -208,7 +192,7 @@ const funcs = {
         div18.classList.add("mt-3"); 
 
         const select = document.createElement('select');
-        select.classList.add="form-select"; 
+        select.classList.add("form-select"); 
         select.setAttribute("aria-label","Default select example");
         select.setAttribute("id","prioritySelect");
 
@@ -230,7 +214,7 @@ const funcs = {
         select.appendChild(option2);
         div18.appendChild(select);
         div17.appendChild(div18);
-            
+        div9.appendChild(div17);   
          
         
 
@@ -256,17 +240,13 @@ const funcs = {
         div19.appendChild(button3);
         div19.appendChild(button4);
     
-       
-        
-        div2.appendChild(div5);
-        div2.appendChild(div9);
-        div2.appendChild(div12);
-        div2.appendChild(div13);
-        div2.appendChild(div15);
-        div2.appendChild(div17);
-        div2.appendChild(div19);
-       
 
+        div7.appendChild(div8);
+        div7.appendChild(div9);
+        div7.appendChild(div19);
+        div6.appendChild(div7);
+        div5.appendChild(div6);
+        div2.appendChild(div5);
         console.log(div2);
         return div2;
 
