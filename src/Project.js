@@ -14,8 +14,10 @@ class Project {
         
     }
 
-    deleteElement(index){
-        this.list.splice(index,1)
+    deleteElement(title) {
+        for (let i = 0; i < this.list.length; i += 1) {
+            (this.list[i].title === title) ? this.list.splice(i, 1) : '';
+        }
     }
 }
 
