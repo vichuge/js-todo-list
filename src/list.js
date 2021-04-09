@@ -49,7 +49,12 @@ const lists = {
     
             const small = document.createElement('small');
             small.innerText = task.date;
-    
+
+            const select = document.createElement('select');
+            select.classList.add('form-select');
+            select.setAttribute('aria-label', 'Default select example');
+            
+
             const input2 = document.createElement('input');
             input2.classList.add('btn');
             input2.classList.add('btn-primary');

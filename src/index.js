@@ -25,7 +25,4 @@ const init = () => {
   funcs.buildModal();
 }
 
-
-
-
 init();
