@@ -3,7 +3,7 @@ import lists from './list.js';
 import Project from './Project.js';
 
 const funcs = {
-    addTask(project) {
+    addTask(project, projects) {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
         const dueDate = document.getElementById('dueDate').value;
@@ -26,11 +26,11 @@ const funcs = {
 
         const elem = new Task(title, description, dueDate, priority);
         project.addElement(elem);
-        lists.createTodoList(project);
+        lists.createTodoList(project, projects);
         emptyInputs();
         closeModal();
     },
-    addProject(projects) {
+    addProject(project, projects) {
         const title = document.getElementById('title2').value;
         const description = document.getElementById('description2').value;
 
@@ -50,6 +50,7 @@ const funcs = {
         emptyInputs();
         closeModal2();
         lists.createProjectsList(projects);
+        lists.createTodoList(project,projects);
     },
     buildModal() {
         
@@ -247,7 +248,7 @@ const funcs = {
         div6.appendChild(div7);
         div5.appendChild(div6);
         div2.appendChild(div5);
-        console.log(div2);
+        //console.log(div2);
         return div2;
 
     }

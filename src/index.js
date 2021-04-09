@@ -1,26 +1,26 @@
 import _ from 'lodash';
 import './style.css';
 
-import Task from './Task.js';
-import Project from './Project.js';
+import Task from './Task';
+import Project from './Project';
+import AllProjects from './AllProjects';
 
-import lists from './list.js';
-import funcs from './modal.js';
+import lists from './list';
+import funcs from './modal';
 
 const init = () => {
-  const projects = [];
   const project = new Project();
-  projects.push(project);
+  const allProjects = new AllProjects();
+  allProjects.addElement(project);
   project.addElement(new Task('title1','description1','05 / 05 / 2005', 'high'));
   project.addElement(new Task('title2','description2','06 / 06 / 2006', 'low'));
-  //console.log(project);
-  lists.createTodoList(project);
-  lists.createProjectsList(projects);
+  lists.createTodoList(project,allProjects.list);
+  lists.createProjectsList(allProjects.list);
   let createTask = document.getElementById('createTask');
-  createTask.addEventListener('click', () => { funcs.addTask(project); });
+  createTask.addEventListener('click', () => { funcs.addTask(project, allProjects.list); });
 
   let createProject = document.getElementById('createProject');
-  createProject.addEventListener('click', () => { funcs.addProject(projects) });
+  createProject.addEventListener('click', () => { funcs.addProject(project, allProjects.list) });
 
   funcs.buildModal();
 }

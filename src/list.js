@@ -9,7 +9,7 @@ const lists = {
             ul.appendChild(li);
         }).join('');
     },
-    createTodoList(tasks) {
+    createTodoList(tasks, projects) {
         let container = document.getElementById('container');
         container.innerHTML = '';
         const row = document.createElement('div');
@@ -53,7 +53,14 @@ const lists = {
             const select = document.createElement('select');
             select.classList.add('form-select');
             select.setAttribute('aria-label', 'Default select example');
-            
+            select.addEventListener('change', () => { changeProject(select.value, tasks, index)});
+            const mappy2 = projects.map((p) => {
+                const option = document.createElement('option');
+                option.value = p.title;
+                option.innerHTML = p.title;
+                (p.title === tasks.title ) ? option.setAttribute('selected',''): '';
+                select.appendChild(option);
+            });
 
             const input2 = document.createElement('input');
             input2.classList.add('btn');
@@ -61,12 +68,13 @@ const lists = {
             input2.type = 'button';
             input2.id = 'deleteid';
             input2.value = 'Delete';
-            input2.addEventListener('click', () => { deleteTask(tasks, index); });
+            input2.addEventListener('click', () => { deleteTask(tasks, index, projects); });
 
             div2.appendChild(input1);
             div2.appendChild(h5);
             div2.appendChild(p);
             div2.appendChild(small);
+            div2.appendChild(select);
             div2.appendChild(input2);
             div1.appendChild(div2);
             li.appendChild(div1);
@@ -76,14 +84,23 @@ const lists = {
         row.appendChild(col, tasks.list);
         col.appendChild(todoTask);
     
-    
+        const title = document.createElement('h2');
+        title.innerHTML = `Project: ${tasks.title}`;
+
+        container.appendChild(title);
         container.appendChild(row);
     }
 }
 
-const deleteTask = (project,id) => {
+const deleteTask = (project,id, projects) => {
     project.list.splice(id, 1);
-    lists.createTodoList(project);
+    lists.createTodoList(project, projects);
+}
+
+const changeProject = (sended, tasks, index) => {
+    console.log(sended);
+    console.log(tasks);
+    console.log(index);
 }
 
 export default lists;

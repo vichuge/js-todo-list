@@ -19,3 +19,7 @@
 .twhite {
   color: white;
 }
+
+.form-select {
+  width: auto;
+}
