@@ -15,7 +15,6 @@ const allProjectsFunc = () => {
 }
 
 const init = () => {
-  
   const project = new Project('project number 1', 'description of project number 1');
   const project2 = new Project('project number 2', 'description of project number 2');
   allProjects.addElement(project);
@@ -25,17 +24,16 @@ const init = () => {
   project2.addElement(new Task('title3','description3','07 / 07 / 2007', 'medium'));
   lists.createTodoList();
   lists.createProjectsList(allProjects.list);
-  // let createTask = document.getElementById('createTask');
-  // createTask.addEventListener('click', () => { funcs.addTask(project, allProjects.list); });
+  const modal = document.getElementById('modal');
+  modal.appendChild(funcs.buildModal());
+  let createTask = document.getElementById('createTask');
+  createTask.addEventListener('click', () => { funcs.addTask(allProjects.list); });
 
   let createProject = document.getElementById('createProject');
-  createProject.addEventListener('click', () => { funcs.addProject(project, allProjects.list) });
+  createProject.addEventListener('click', () => { funcs.addProject(allProjects.list) });
 
-  const modal = document.getElementById('modal');
-
-  
-  modal.appendChild(funcs.buildModal());
-  
+  /*let openModal = document.getElementById('openModal');
+  openModal.addEventListener('click', () => { console.log('hi')});*/
 }
 
 export default allProjectsFunc;

@@ -1,13 +1,15 @@
 import Task from './Task.js';
 import lists from './list.js';
 import Project from './Project.js';
+import allProjectsFunc from "./index";
 
 const funcs = {
-    addTask(project, projects) {
+    addTask(projects) {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
         const dueDate = document.getElementById('dueDate').value;
         const priority = document.getElementById('prioritySelect').value;
+        const projectName = document.getElementById('projectsSelect').value;
 
         const errors = document.getElementById('error');
         errors.innerHTML = '';
@@ -24,13 +26,21 @@ const funcs = {
             return;
         }
 
+        const allProjects = allProjectsFunc();
         const elem = new Task(title, description, dueDate, priority);
-        project.addElement(elem);
-        lists.createTodoList(project, projects);
+        let project = '';
+        for (let i=0; i<allProjects.list.length;i += 1) {
+            if (allProjects.list[i].title === projectName ){
+                project = allProjects.list[i];
+                allProjects.list[i].addElement(elem);
+            }
+            
+        }
+        lists.createTodoList(project);
         emptyInputs();
         closeModal();
     },
-    addProject(project, projects) {
+    addProject(projects) {
         const title = document.getElementById('title2').value;
         const description = document.getElementById('description2').value;
 
@@ -45,12 +55,19 @@ const funcs = {
             return;
         }
 
+        const select2 = document.getElementById('projectsSelect');
+        const option = document.createElement('option');
+        option.value = title;
+        option.innerHTML= title;
+        select2.appendChild(option);
+
         const elem = new Project(title, description);
         projects.push(elem);
+        console.log(projects);
         emptyInputs();
         closeModal2();
         lists.createProjectsList(projects);
-        lists.createTodoList(project,projects);
+        lists.createTodoList();
     },
     buildModal() {
         
@@ -147,6 +164,7 @@ const funcs = {
 
         const textarea1 = document.createElement('textarea');
         textarea1.classList.add("form-control");
+        textarea1.id = 'description';
         textarea1.setAttribute("placeholder","Add description here");
         textarea1.name="description";
             
@@ -177,7 +195,6 @@ const funcs = {
         div16.appendChild(input1);
         div15.appendChild(div16);
         div9.appendChild(div15);
-           
         
         const div17 = document.createElement('div');
         div17.classList.add("row");
@@ -223,22 +240,16 @@ const funcs = {
         select2.classList.add("form-select"); 
         select2.setAttribute("aria-label","Default select example");
         select2.setAttribute("id","prioritySelect");
+        select2.id = 'projectsSelect';
 
-        const option3 = document.createElement('option');
-        option3.value = "project 1";
-        option3.innerHTML="the project 1";
+        const allProjects = allProjectsFunc();
+        for (let i = 0; i < allProjects.list.length; i += 1) {
+            const option = document.createElement('option');
+            option.value = allProjects.list[i].title;
+            option.innerHTML= allProjects.list[i].title;
+            select2.appendChild(option);
+        };
 
-        const option4 = document.createElement('option');
-        option4.value = "project 2";
-        option4.innerHTML="the project 2";
-
-        const option5 = document.createElement('option');
-        option5.value = "project 3";
-        option5.innerHTML="the project 3";
-
-        select2.appendChild(option3);
-        select2.appendChild(option4);
-        select2.appendChild(option5);
         div32.appendChild(select2);
         div31.appendChild(div32);
         div9.appendChild(div31);  
@@ -280,8 +291,6 @@ const funcs = {
 
     }
 }
-const addTask = (project) => {}
-const addProject = (projects) => {}
 
 function emptyInputs() {
     document.getElementById('title').value = '';
