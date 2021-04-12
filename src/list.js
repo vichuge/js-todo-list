@@ -66,7 +66,7 @@ const lists = {
                 input2.type = 'button';
                 input2.id = 'deleteid';
                 input2.value = 'Delete';
-                input2.addEventListener('click', () => { deleteTask(tasks, index, tasks); });
+                input2.addEventListener('click', () => { deleteTask(tasks, task.title, tasks); });
 
                 div2.appendChild(input1);
                 div2.appendChild(h5);
@@ -115,7 +115,7 @@ const lists = {
                     input2.type = 'button';
                     input2.id = 'deleteid';
                     input2.value = 'Delete';
-                    input2.addEventListener('click', () => { deleteTask(i, j, tasks); });
+                    input2.addEventListener('click', () => { deleteTask(allProjects.list[i], allProjects.list[i].list[j].title, 'default'); });
 
                     div2.appendChild(input1);
                     div2.appendChild(h5);
@@ -144,10 +144,13 @@ const lists = {
     }
 }
 
-const deleteTask = (indproject, indtask, tasks) => {
-    const allProjects = allProjectsFunc();
-    allProjects.list[indproject].list.splice(indtask, 1);
-    ( tasks === 'default') ? lists.createTodoList():lists.createTodoList(allProjects.list[indproject]);
+const deleteTask = (project, titleProject, list) => {
+    for (let i=0; i < project.list.length; i += 1) {
+        if (titleProject === project.list[i].title) {
+            project.list.splice(i, 1);
+        }
+    }
+    ( list === 'default') ? lists.createTodoList():lists.createTodoList(project);
 }
 
 export default lists;
