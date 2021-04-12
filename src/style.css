@@ -23,3 +23,7 @@
 .form-select {
   width: auto;
 }
+
+#liclickable {
+  cursor: pointer;
+}

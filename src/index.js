@@ -23,7 +23,7 @@ const init = () => {
   project.addElement(new Task('title1','description1','05 / 05 / 2005', 'high'));
   project.addElement(new Task('title2','description2','06 / 06 / 2006', 'low'));
   project2.addElement(new Task('title3','description3','07 / 07 / 2007', 'medium'));
-  lists.createTodoList(project);
+  lists.createTodoList();
   lists.createProjectsList(allProjects.list);
   let createTask = document.getElementById('createTask');
   createTask.addEventListener('click', () => { funcs.addTask(project, allProjects.list); });

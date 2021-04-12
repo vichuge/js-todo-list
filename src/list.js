@@ -4,12 +4,18 @@ const lists = {
     createProjectsList(list) {
         let ul = document.getElementById('projectsList');
         ul.innerHTML = '';
+        const li1 = document.createElement('li');
+        li1.classList.add('list-group-item');
+        li1.innerHTML = 'All projects';
+        li1.id = 'liclickable';
+        li1.addEventListener('click', () => { this.createTodoList()});
+        ul.appendChild(li1);
         const mappy = list.map((project) => {
             const li = document.createElement('li');
             li.classList.add('list-group-item');
-            li.id = "listclick";
             li.innerHTML = project.title;
-            li.addEventListener('click', (e) => { changeProject(e, project)});
+            li.id = 'liclickable';
+            li.addEventListener('click', () => { this.createTodoList(project)});
             ul.appendChild(li);
         }).join('');
     },
@@ -75,7 +81,6 @@ const lists = {
             const allProjects = allProjectsFunc();
             for (let i = 0; i < allProjects.list.length; i += 1) {
                 for (let j = 0; j < allProjects.list[i].list.length; j += 1) {
-                    console.log(allProjects.list[i].list[j]);
                     const li = document.createElement('li');
                     li.classList.add('list-group-item');
                     allProjects.list[i].list[j].priority === 'low' ? li.classList.add('bgreen') : allProjects.list[i].list[j].priority === 'medium' ? li.classList.add('byellow') : allProjects.list[i].list[j].priority === 'high' ? li.classList.add('bred') : '';
@@ -127,7 +132,12 @@ const lists = {
         col.appendChild(todoTask);
 
         const title = document.createElement('h2');
-        title.innerHTML = `Project: ${tasks.title}`;
+        if (typeof tasks.title === 'undefined') {
+            title.innerHTML = 'All projects';
+        } else {
+            title.innerHTML = tasks.title;
+        }
+        //title.innerHTML = 'Project:' + (tasks.title === 'undefined') ? 'All tasks' : tasks.title;
 
         container.appendChild(title);
         container.appendChild(row);
@@ -138,22 +148,6 @@ const deleteTask = (indproject, indtask, tasks) => {
     const allProjects = allProjectsFunc();
     allProjects.list[indproject].list.splice(indtask, 1);
     ( tasks === 'default') ? lists.createTodoList():lists.createTodoList(allProjects.list[indproject]);
-}
-
-const changeProject = (event, projects) => {
-    let sended = event.target.value;
-    let title = event.target.parentElement.childNodes[1].innerText;
-    const oldProject = projects.map(project => {
-        if (project.list.find(task => task.title === title)) {
-            return project;
-        }
-        return null;
-    }).filter(project => project !== null)[0];
-    let task = oldProject.list.filter(task => task.title === title)[0];
-    const project = projects.filter(project => project.title === sended)[0];
-    project.addElement(task);
-    oldProject.deleteElement(title);
-    lists.createTodoList(project, projects);
 }
 
 export default lists;
