@@ -7,7 +7,9 @@ const lists = {
         const mappy = list.map((project) => {
             const li = document.createElement('li');
             li.classList.add('list-group-item');
+            li.id = "listclick";
             li.innerHTML = project.title;
+            li.addEventListener('click', (e) => { changeProject(e, project)});
             ul.appendChild(li);
         }).join('');
     },
@@ -136,6 +138,22 @@ const deleteTask = (indproject, indtask, tasks) => {
     const allProjects = allProjectsFunc();
     allProjects.list[indproject].list.splice(indtask, 1);
     ( tasks === 'default') ? lists.createTodoList():lists.createTodoList(allProjects.list[indproject]);
+}
+
+const changeProject = (event, projects) => {
+    let sended = event.target.value;
+    let title = event.target.parentElement.childNodes[1].innerText;
+    const oldProject = projects.map(project => {
+        if (project.list.find(task => task.title === title)) {
+            return project;
+        }
+        return null;
+    }).filter(project => project !== null)[0];
+    let task = oldProject.list.filter(task => task.title === title)[0];
+    const project = projects.filter(project => project.title === sended)[0];
+    project.addElement(task);
+    oldProject.deleteElement(title);
+    lists.createTodoList(project, projects);
 }
 
 export default lists;
