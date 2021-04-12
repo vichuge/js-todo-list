@@ -25,12 +25,17 @@ const init = () => {
   project2.addElement(new Task('title3','description3','07 / 07 / 2007', 'medium'));
   lists.createTodoList();
   lists.createProjectsList(allProjects.list);
-  let createTask = document.getElementById('createTask');
-  createTask.addEventListener('click', () => { funcs.addTask(project, allProjects.list); });
+  // let createTask = document.getElementById('createTask');
+  // createTask.addEventListener('click', () => { funcs.addTask(project, allProjects.list); });
 
   let createProject = document.getElementById('createProject');
   createProject.addEventListener('click', () => { funcs.addProject(project, allProjects.list) });
 
+  const modal = document.getElementById('modal');
+
+  
+  modal.appendChild(funcs.buildModal());
+  
 }
 
 export default allProjectsFunc;

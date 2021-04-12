@@ -54,11 +54,6 @@ const funcs = {
     },
     buildModal() {
         
-        const div2 = document.createElement('div');
-        div2.setAttribute('id', 'modal');
-        div2.classList.add('container');
-        
-        
 
         const div5 = document.createElement('div');
         div5.setAttribute('id', 'exampleModal');
@@ -112,7 +107,6 @@ const funcs = {
         div10.appendChild(div11);
         div9.appendChild(div10);
         
-    
     
         
         const div12 = document.createElement('div');
@@ -216,8 +210,39 @@ const funcs = {
         div18.appendChild(select);
         div17.appendChild(div18);
         div9.appendChild(div17);   
+
+
+        const div31 = document.createElement('div');
+        div31.classList.add("row");
+
+        const div32 = document.createElement('div');
+        div32.classList.add("col-12"); 
+        div32.classList.add("mt-3"); 
+
+        const select2 = document.createElement('select');
+        select2.classList.add("form-select"); 
+        select2.setAttribute("aria-label","Default select example");
+        select2.setAttribute("id","prioritySelect");
+
+        const option3 = document.createElement('option');
+        option3.value = "project 1";
+        option3.innerHTML="the project 1";
+
+        const option4 = document.createElement('option');
+        option4.value = "project 2";
+        option4.innerHTML="the project 2";
+
+        const option5 = document.createElement('option');
+        option5.value = "project 3";
+        option5.innerHTML="the project 3";
+
+        select2.appendChild(option3);
+        select2.appendChild(option4);
+        select2.appendChild(option5);
+        div32.appendChild(select2);
+        div31.appendChild(div32);
+        div9.appendChild(div31);  
          
-        
 
         const div19 = document.createElement('div');
         div19.classList.add("modal-footer");      
@@ -234,8 +259,11 @@ const funcs = {
         button4.type="button";
         button4.classList.add("btn");
         button4.classList.add("btn-primary");
+        button4.id = "testProject"
         button4.innerHTML="Add Task"
         button4.setAttribute("id","createTask");
+        
+       
               
             
         div19.appendChild(button3);
@@ -247,9 +275,8 @@ const funcs = {
         div7.appendChild(div19);
         div6.appendChild(div7);
         div5.appendChild(div6);
-        div2.appendChild(div5);
-        //console.log(div2);
-        return div2;
+
+        return div5;
 
     }
 }
