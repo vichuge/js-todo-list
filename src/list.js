@@ -49,6 +49,7 @@ const lists = {
                 input1.classList.add('form-check-input');
                 input1.classList.add('me-1');
                 input1.type = 'checkbox';
+                input1.addEventListener('click', () => { changeCheck(tasks, task.title) });
 
                 const h5 = document.createElement('h5');
                 h5.classList.add('mb-1');
@@ -98,6 +99,7 @@ const lists = {
                     input1.classList.add('form-check-input');
                     input1.classList.add('me-1');
                     input1.type = 'checkbox';
+                    input1.addEventListener('click', () => { changeCheck(allProjects.list[i], allProjects.list[i].list[j].title) });
 
                     const h5 = document.createElement('h5');
                     h5.classList.add('mb-1');
@@ -151,6 +153,14 @@ const deleteTask = (project, titleProject, list) => {
         }
     }
     ( list === 'default') ? lists.createTodoList():lists.createTodoList(project);
+}
+
+const changeCheck = (project, titleProject) => {
+    for (let i=0; i < project.list.length; i += 1) {
+        if (titleProject === project.list[i].title) {
+            (project.list[i].check === true) ? project.list[i].check = false : project.list[i].check = true;
+        }
+    }
 }
 
 export default lists;
