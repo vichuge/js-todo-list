@@ -50,6 +50,7 @@ const lists = {
                 input1.classList.add('me-1');
                 input1.type = 'checkbox';
                 input1.addEventListener('click', () => { changeCheck(tasks, task.title) });
+                (task.check === true) ? input1.setAttribute('checked', ''): '';
 
                 const h5 = document.createElement('h5');
                 h5.classList.add('mb-1');
@@ -100,6 +101,7 @@ const lists = {
                     input1.classList.add('me-1');
                     input1.type = 'checkbox';
                     input1.addEventListener('click', () => { changeCheck(allProjects.list[i], allProjects.list[i].list[j].title) });
+                    (allProjects.list[i].list[j].check === true) ? input1.setAttribute('checked', ''): '';
 
                     const h5 = document.createElement('h5');
                     h5.classList.add('mb-1');
