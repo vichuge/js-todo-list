@@ -1,4 +1,5 @@
 import allProjectsFunc from "./index";
+import funcs from "./modal";
 
 const lists = {
     createProjectsList(list) {
@@ -63,6 +64,31 @@ const lists = {
                 const small = document.createElement('small');
                 small.innerText = task.date;
 
+                
+
+                const div44 = document.createElement('div');
+                div44.classList.add('row');
+                div44.classList.add('mb-3');
+                 
+                const div45 = document.createElement('div');
+                div45.classList.add('col-12');
+
+                const button2 = document.createElement('button');
+                button2.classList.add('btn');
+                button2.classList.add('btn-primary');
+                button2.type = 'button';
+                button2.id = 'editTask';
+                button2.innerHTML = 'Edit';
+                button2.setAttribute('data-bs-toggle', 'modal');
+                button2.setAttribute('data-bs-target', '#exampleModal');
+                button2.addEventListener('click', () => { updateTask(tasks, task.title, tasks); });
+                     
+
+                div45.appendChild(button2);
+                div44.appendChild(div45);
+                
+
+
                 const input2 = document.createElement('input');
                 input2.classList.add('btn');
                 input2.classList.add('btn-primary');
@@ -75,6 +101,7 @@ const lists = {
                 div2.appendChild(h5);
                 div2.appendChild(p);
                 div2.appendChild(small);
+                div2.appendChild(div44);
                 div2.appendChild(input2);
                 div1.appendChild(div2);
                 li.appendChild(div1);
@@ -112,6 +139,26 @@ const lists = {
     
                     const small = document.createElement('small');
                     small.innerText = task.date;
+
+                    const div44 = document.createElement('div');
+                    div44.classList.add('row');
+                    div44.classList.add('mb-3');
+                    
+                    const div45 = document.createElement('div');
+                    div45.classList.add('col-12');
+
+                    const button2 = document.createElement('button');
+                    button2.classList.add('btn');
+                    button2.classList.add('btn-primary');
+                    button2.type = 'button';
+                    button2.id = 'editTask';
+                    button2.innerHTML = 'Edit';
+                    button2.setAttribute('data-bs-toggle', 'modal');
+                    button2.setAttribute('data-bs-target', '#exampleModal');
+                    button2.addEventListener('click', () => { updateTask(tasks, task.title, tasks); }); 
+                    
+                    div45.appendChild(button2);
+                    div44.appendChild(div45);
     
                     const input2 = document.createElement('input');
                     input2.classList.add('btn');
@@ -121,10 +168,12 @@ const lists = {
                     input2.value = 'Delete';
                     input2.addEventListener('click', () => { deleteTask(allProjects.list[i], task.title); });
     
+                
                     div2.appendChild(input1);
                     div2.appendChild(h5);
                     div2.appendChild(p);
                     div2.appendChild(small);
+                    div2.appendChild(div44);
                     div2.appendChild(input2);
                     div1.appendChild(div2);
                     li.appendChild(div1);
@@ -211,6 +260,15 @@ const changeCheck = (project, titleProject) => {
             (project.list[i].check === true) ? project.list[i].check = false : project.list[i].check = true;
         }
     }
+}
+
+const updateTask = (project, titleProject, list = 'default') => {
+    console.log('hey');
+    // for (let i=0; i < project.list.length; i += 1) {
+    //     if (titleProject === project.list[i].title) {
+    //     }
+    // }
+    // ( list === 'default') ? lists.createTodoList():lists.createTodoList(project);
 }
 
 const runList = () => {

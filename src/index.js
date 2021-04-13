@@ -24,13 +24,22 @@ const init = () => {
   project2.addElement(new Task('title3','description3','07 / 07 / 2007', 'medium'));
   lists.createTodoList();
   lists.createProjectsList(allProjects.list);
+
+  const modal2 = document.getElementById('modal2');
+  modal2.appendChild(funcs.editModal());
   const modal = document.getElementById('modal');
   modal.appendChild(funcs.buildModal());
+
+
+
   let createTask = document.getElementById('createTask');
   createTask.addEventListener('click', () => { funcs.addTask(allProjects.list); });
 
   let createProject = document.getElementById('createProject');
   createProject.addEventListener('click', () => { funcs.addProject(allProjects.list) });
+
+  let updateTask = document.getElementById('updateTask');
+  updateTask.addEventListener('click', () => { funcs.updateTask(); });
 
   /*let openModal = document.getElementById('openModal');
   openModal.addEventListener('click', () => { console.log('hi')});*/
