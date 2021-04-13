@@ -96,10 +96,6 @@ const updateTask = (project, titleTask, list = 'default') => {
     for (let i=0; i < priorEdit.length; i+=1) {
         (myTask.priority === priorEdit[i].value) ? priorEdit[i].setAttribute('selected','') : '';
     }
-    
-    for (let i=0; i<projectEdit.length; i+=1) {
-        (myProject === projectEdit[i].value) ? projectEdit[i].setAttribute('selected','') : '';
-    }
 }
 
 const runList = (todoTask, tasks, nextList) => {

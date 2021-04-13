@@ -69,12 +69,11 @@ const funcs = {
         lists.createProjectsList(projects);
         lists.createTodoList();
     },
-    editTask(projects) {
-        const title = document.getElementById('title').value;
-        const description = document.getElementById('description').value;
-        const dueDate = document.getElementById('dueDate').value;
-        const priority = document.getElementById('prioritySelect').value;
-        const projectName = document.getElementById('projectsSelect').value;
+    editTask() {
+        const title = document.getElementById('titleEdit').value;
+        const description = document.getElementById('descriptionEdit').value;
+        const dueDate = document.getElementById('dateEdit').value;
+        const priority = document.getElementById('prioritySelectEdit').value;
 
         const errors = document.getElementById('error');
         errors.innerHTML = '';
@@ -328,7 +327,7 @@ const funcs = {
         div8.classList.add('modal-header');
 
         const h5 = document.createElement('h5');
-        h5.setAttribute('id', 'exampleModalLabel');
+        h5.setAttribute('id', 'exampleModalLabelEdit');
         h5.classList.add('modal-title');
         h5.innerHTML = "Edit the task information"
 
@@ -339,7 +338,6 @@ const funcs = {
         button2.setAttribute("data-bs-dismiss", "modal");
         button2.setAttribute("aria-label", "Close");
         button2.setAttribute("id", "close");
-
 
         div8.appendChild(h5);
         div8.appendChild(button2);
@@ -464,21 +462,6 @@ const funcs = {
         div32.classList.add("col-12");
         div32.classList.add("mt-3");
 
-        const select2 = document.createElement('select');
-        select2.classList.add("form-select");
-        select2.setAttribute("aria-label", "Default select example");
-        //select2.setAttribute("id", "projectSelectEdit");
-        select2.id = 'projectSelectEdit';
-
-        const allProjects = allProjectsFunc();
-        for (let i = 0; i < allProjects.list.length; i += 1) {
-            const option = document.createElement('option');
-            option.value = allProjects.list[i].title;
-            option.innerHTML = allProjects.list[i].title;
-            select2.appendChild(option);
-        };
-
-        div32.appendChild(select2);
         div31.appendChild(div32);
         div9.appendChild(div31);
 
@@ -499,6 +482,7 @@ const funcs = {
         button4.id = "testProject"
         button4.innerHTML = "Edit Task"
         button4.setAttribute("id", "updateTask");
+        button4.addEventListener('click', () => { this.editTask()});
 
         div19.appendChild(button3);
         div19.appendChild(button4);
