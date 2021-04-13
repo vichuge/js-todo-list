@@ -107,7 +107,6 @@ const funcs = {
     },
     buildModal() {
 
-
         const div5 = document.createElement('div');
         div5.setAttribute('id', 'exampleModal');
         div5.classList.add('modal');
@@ -130,7 +129,6 @@ const funcs = {
         h5.classList.add('modal-title');
         h5.innerHTML = "Enter the task information"
 
-
         const button2 = document.createElement('button');
         button2.type = "button";
         button2.classList.add('btn-close');
@@ -138,10 +136,8 @@ const funcs = {
         button2.setAttribute("aria-label", "Close");
         button2.setAttribute("id", "close");
 
-
         div8.appendChild(h5);
         div8.appendChild(button2);
-
 
         const div9 = document.createElement('div');
         div9.classList.add("modal-body");
@@ -160,15 +156,12 @@ const funcs = {
         div10.appendChild(div11);
         div9.appendChild(div10);
 
-
-
         const div12 = document.createElement('div');
         div12.classList.add("row");
 
         const div21 = document.createElement('div');
         div21.classList.add("col-12");
         div21.classList.add("mb-2");
-
 
         const label1 = document.createElement('label');
         label1.htmlFor = 'title';
@@ -179,13 +172,10 @@ const funcs = {
         input2.id = 'title';
         input2.name = 'title';
 
-
         div21.appendChild(label1);
         div21.appendChild(input2);
         div12.appendChild(div21);
         div9.appendChild(div12);
-
-
 
         const div13 = document.createElement('div');
         div13.classList.add("row");
@@ -204,13 +194,10 @@ const funcs = {
         textarea1.setAttribute("placeholder", "Add description here");
         textarea1.name = "description";
 
-
         div14.appendChild(label2);
         div14.appendChild(textarea1);
         div13.appendChild(div14);
         div9.appendChild(div13);
-
-
 
         const div15 = document.createElement('div');
         div15.classList.add("row");
@@ -256,7 +243,6 @@ const funcs = {
         option2.value = "high";
         option2.innerHTML = "High";
 
-
         select.appendChild(option);
         select.appendChild(option1);
         select.appendChild(option2);
@@ -290,7 +276,6 @@ const funcs = {
         div31.appendChild(div32);
         div9.appendChild(div31);
 
-
         const div19 = document.createElement('div');
         div19.classList.add("modal-footer");
 
@@ -309,9 +294,6 @@ const funcs = {
         button4.id = "testProject"
         button4.innerHTML = "Add Task"
         button4.setAttribute("id", "createTask");
-
-
-
 
         div19.appendChild(button3);
         div19.appendChild(button4);
@@ -430,8 +412,6 @@ const funcs = {
         div13.appendChild(div14);
         div9.appendChild(div13);
 
-
-
         const div15 = document.createElement('div');
         div15.classList.add("row");
 
@@ -446,7 +426,6 @@ const funcs = {
         input1.setAttribute("id", "dateEdit");
         input1.type = "date"
         input1.name = "dueDate";
-        input1.value = "2014-02-08";
 
         div16.appendChild(label3);
         div16.appendChild(input1);
@@ -470,7 +449,7 @@ const funcs = {
             const option = document.createElement('option');
             option.value = priors[i];
             option.innerHTML = priors[i];
-            option.setAttribute('selected','');
+            //option.setAttribute('selected','');
             select.appendChild(option);
         }
 
@@ -488,8 +467,8 @@ const funcs = {
         const select2 = document.createElement('select');
         select2.classList.add("form-select");
         select2.setAttribute("aria-label", "Default select example");
-        select2.setAttribute("id", "projectSelectEdit");
-        select2.id = 'projectsSelect';
+        //select2.setAttribute("id", "projectSelectEdit");
+        select2.id = 'projectSelectEdit';
 
         const allProjects = allProjectsFunc();
         for (let i = 0; i < allProjects.list.length; i += 1) {

@@ -20,9 +20,9 @@ const init = () => {
   allProjects.addElement(project);
   allProjects.addElement(project2);
   const date = new Date();
-  project.addElement(new Task('title1','description1', date, 'high'));
-  project.addElement(new Task('title2','description2',new Date('06 / 06 / 2006'), 'low'));
-  project2.addElement(new Task('title3','description3',new Date('07 / 07 / 2007'), 'medium'));
+  project.addElement(new Task('title1','description1', date, 'High'));
+  project.addElement(new Task('title2','description2',new Date('06 / 06 / 2006'), 'Low'));
+  project2.addElement(new Task('title3','description3',new Date('07 / 07 / 2007'), 'Medium'));
   lists.createTodoList();
   lists.createProjectsList(allProjects.list);
 
@@ -31,9 +31,6 @@ const init = () => {
   const modal2 = document.getElementById('modal2');
   modal2.appendChild(funcs.editModal());
   
-
-
-
   let createTask = document.getElementById('createTask');
   createTask.addEventListener('click', () => { funcs.addTask(allProjects.list); });
 
@@ -42,9 +39,6 @@ const init = () => {
 
   let updateTask = document.getElementById('updateTask');
   updateTask.addEventListener('click', () => { funcs.updateTask(); });
-
-  /*let openModal = document.getElementById('openModal');
-  openModal.addEventListener('click', () => { console.log('hi')});*/
 }
 
 export default allProjectsFunc;

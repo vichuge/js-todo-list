@@ -73,15 +73,15 @@ const changeCheck = (project, titleProject) => {
     }
 }
 
-const updateTask = (project, titleProject, list = 'default') => {
+const updateTask = (project, titleTask, list = 'default') => {
+    let myProject = '';
     let myTask = '';
     for (let i = 0; i < project.list.length; i += 1) {
-        if (titleProject === project.list[i].title) {
-            //(project.list[i].check === true) ? project.list[i].check = false : project.list[i].check = true;
+        if (titleTask === project.list[i].title) {
             myTask = project.list[i];
+            myProject = project.title;
         }
     }
-    //myTask.title = 'changed';
     const titleEdit = document.getElementById('titleEdit');
     const descEdit = document.getElementById('descriptionEdit');
     const dateEdit = document.getElementById('dateEdit');
@@ -90,23 +90,23 @@ const updateTask = (project, titleProject, list = 'default') => {
 
     titleEdit.value = myTask.title;
     descEdit.value = myTask.desc;
-    dateEdit = new Date();
+    const constructDate = `${myTask.date.getFullYear()}-${("0" + myTask.date.getMonth()).slice(-2)}-${("0" + myTask.date.getDay()).slice(-2)}`;
+    dateEdit.value = constructDate;
 
-    console.log(dateEdit.getDate());
-
-   
-    priorEdit.value = myTask.priority;
-    console.log(priorEdit.value);
-
-    //dateEdit.value = myTask.date;
-    // ( list === 'default') ? lists.createTodoList():lists.createTodoList(project);
+    for (let i=0; i < priorEdit.length; i+=1) {
+        (myTask.priority === priorEdit[i].value) ? priorEdit[i].setAttribute('selected','') : '';
+    }
+    
+    for (let i=0; i<projectEdit.length; i+=1) {
+        (myProject === projectEdit[i].value) ? projectEdit[i].setAttribute('selected','') : '';
+    }
 }
 
 const runList = (todoTask, tasks, nextList) => {
     const mappy = tasks.list.map((task, index) => {
         const li = document.createElement('li');
         li.classList.add('list-group-item');
-        task.priority === 'low' ? li.classList.add('bgreen') : task.priority === 'medium' ? li.classList.add('byellow') : task.priority === 'high' ? li.classList.add('bred') : '';
+        task.priority === 'Low' ? li.classList.add('bgreen') : task.priority === 'Medium' ? li.classList.add('byellow') : task.priority === 'High' ? li.classList.add('bred') : '';
 
         const div1 = document.createElement('div');
         div1.classList.add('row');
@@ -132,8 +132,7 @@ const runList = (todoTask, tasks, nextList) => {
 
         const small = document.createElement('small');
         let date = new Date(task.date)
-        //console.log(date);
-        small.innerText = `${date.getDay()} / ${date.getMonth()} / ${date.getFullYear()}`;
+        small.innerText = `${date.getFullYear()}/${("0" + date.getMonth()).slice(-2)}/${("0" + date.getDay()).slice(-2)}`;
 
         const button2 = document.createElement('button');
         button2.classList.add('btn');
