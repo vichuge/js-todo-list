@@ -74,11 +74,25 @@ const changeCheck = (project, titleProject) => {
 }
 
 const updateTask = (project, titleProject, list = 'default') => {
-    console.log('hey');
-    // for (let i=0; i < project.list.length; i += 1) {
-    //     if (titleProject === project.list[i].title) {
-    //     }
-    // }
+    let myTask = '';
+    for (let i = 0; i < project.list.length; i += 1) {
+        if (titleProject === project.list[i].title) {
+            //(project.list[i].check === true) ? project.list[i].check = false : project.list[i].check = true;
+            myTask = project.list[i];
+        }
+    }
+    //myTask.title = 'changed';
+    const titleEdit = document.getElementById('titleEdit');
+    const descEdit = document.getElementById('descriptionEdit');
+    const dateEdit = document.getElementById('dateEdit');
+    const priorEdit = document.getElementById('prioritySelectEdit');
+    const projectEdit = document.getElementById('projectSelectEdit');
+
+    titleEdit.value = myTask.title;
+    descEdit.value = myTask.desc;
+    dateEdit.value = new Date();
+    console.log(dateEdit.value);
+    //dateEdit.value = myTask.date;
     // ( list === 'default') ? lists.createTodoList():lists.createTodoList(project);
 }
 
@@ -111,7 +125,9 @@ const runList = (todoTask, tasks, nextList) => {
         p.innerText = task.desc;
 
         const small = document.createElement('small');
-        small.innerText = task.date;
+        let date = new Date(task.date)
+        //console.log(date);
+        small.innerText = `${date.getDay()} / ${date.getMonth()} / ${date.getFullYear()}`;
 
         const button2 = document.createElement('button');
         button2.classList.add('btn');
@@ -129,7 +145,6 @@ const runList = (todoTask, tasks, nextList) => {
         input2.type = 'button';
         input2.id = 'deleteid';
         input2.innerHTML = 'Delete';
-        //console.log(nextList);
         input2.addEventListener('click', () => { deleteTask(tasks, task.title, nextList); });
 
         div2.appendChild(input1);

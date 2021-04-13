@@ -19,9 +19,10 @@ const init = () => {
   const project2 = new Project('project number 2', 'description of project number 2');
   allProjects.addElement(project);
   allProjects.addElement(project2);
-  project.addElement(new Task('title1','description1','05 / 05 / 2005', 'high'));
-  project.addElement(new Task('title2','description2','06 / 06 / 2006', 'low'));
-  project2.addElement(new Task('title3','description3','07 / 07 / 2007', 'medium'));
+  const date = new Date();
+  project.addElement(new Task('title1','description1', date, 'high'));
+  project.addElement(new Task('title2','description2',new Date('06 / 06 / 2006'), 'low'));
+  project2.addElement(new Task('title3','description3',new Date('07 / 07 / 2007'), 'medium'));
   lists.createTodoList();
   lists.createProjectsList(allProjects.list);
 

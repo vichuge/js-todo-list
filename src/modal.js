@@ -7,7 +7,7 @@ const funcs = {
     addTask(projects) {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-        const dueDate = document.getElementById('dueDate').value;
+        const dueDate = new Date(document.getElementById('dueDate').value);
         const priority = document.getElementById('prioritySelect').value;
         const projectName = document.getElementById('projectsSelect').value;
 
@@ -224,7 +224,7 @@ const funcs = {
 
         const input1 = document.createElement('input');
         input1.setAttribute("id", "dueDate");
-        input1.type = "date"
+        input1.type = "date";
         input1.name = "dueDate";
 
         div16.appendChild(label3);
@@ -443,9 +443,10 @@ const funcs = {
         label3.innerHTML = "DueDate";
 
         const input1 = document.createElement('input');
-        input1.setAttribute("id", "dueDate");
+        input1.setAttribute("id", "dateEdit");
         input1.type = "date"
         input1.name = "dueDate";
+        input1.value = "2014-02-08";
 
         div16.appendChild(label3);
         div16.appendChild(input1);
@@ -462,23 +463,17 @@ const funcs = {
         const select = document.createElement('select');
         select.classList.add("form-select");
         select.setAttribute("aria-label", "Default select example");
-        select.setAttribute("id", "prioritySelect");
+        select.setAttribute("id", "prioritySelectEdit");
 
-        const option = document.createElement('option');
-        option.value = "low";
-        option.innerHTML = "Low";
+        const priors = ['Low', 'Medium', 'High'];
+        for (let i=0; i<priors.length; i += 1) {
+            const option = document.createElement('option');
+            option.value = priors[i];
+            option.innerHTML = priors[i];
+            //option.setAttribute('selected','');
+            select.appendChild(option);
+        }
 
-        const option1 = document.createElement('option');
-        option1.value = "medium";
-        option1.innerHTML = "Medium";
-
-        const option2 = document.createElement('option');
-        option2.value = "high";
-        option2.innerHTML = "High";
-
-        select.appendChild(option);
-        select.appendChild(option1);
-        select.appendChild(option2);
         div18.appendChild(select);
         div17.appendChild(div18);
         div9.appendChild(div17);
@@ -493,7 +488,7 @@ const funcs = {
         const select2 = document.createElement('select');
         select2.classList.add("form-select");
         select2.setAttribute("aria-label", "Default select example");
-        select2.setAttribute("id", "prioritySelect");
+        select2.setAttribute("id", "projectSelectEdit");
         select2.id = 'projectsSelect';
 
         const allProjects = allProjectsFunc();
