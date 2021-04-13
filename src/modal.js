@@ -482,7 +482,7 @@ const funcs = {
         button4.id = "testProject"
         button4.innerHTML = "Edit Task"
         button4.setAttribute("id", "updateTask");
-        button4.addEventListener('click', () => { this.editTask()});
+        button4.addEventListener('click', () => { editedTask()});
 
         div19.appendChild(button3);
         div19.appendChild(button4);
@@ -505,6 +505,41 @@ function emptyInputs() {
 
     document.getElementById('title2').value = '';
     document.getElementById('description2').value = '';
+}
+
+const editedTask = () => {
+
+
+    const title = document.getElementById('titleEdit').value;
+    const description = document.getElementById('descriptionEdit').value;
+    const dueDate = new Date(document.getElementById('dateEdit').value);
+    const priority = document.getElementById('prioritySelectEdit').value;
+    
+
+    console.log(title);
+    console.log(description);
+    console.log(dueDate);
+    console.log(priority);
+
+    const errors = document.getElementById('error');
+    errors.innerHTML = '';
+    if (title === '') {
+        errors.innerHTML += 'Title can\'t be blank';
+        return;
+    }
+    if (description === '') {
+        errors.innerHTML += 'Description can\'t be blank';
+        return;
+    }
+    if (dueDate === '') {
+        errors.innerHTML += ' Date can\'t be blank';
+        return;
+    }
+
+    const allProjects = allProjectsFunc();
+    const elem = new Task(title, description, dueDate, priority);
+    emptyInputs();
+    closeModal();
 }
 
 const closeModal = () => {
