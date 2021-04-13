@@ -25,10 +25,11 @@ const init = () => {
   lists.createTodoList();
   lists.createProjectsList(allProjects.list);
 
-  const modal2 = document.getElementById('modal2');
-  modal2.appendChild(funcs.editModal());
   const modal = document.getElementById('modal');
   modal.appendChild(funcs.buildModal());
+  const modal2 = document.getElementById('modal2');
+  modal2.appendChild(funcs.editModal());
+  
 
 
 
