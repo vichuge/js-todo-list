@@ -470,7 +470,7 @@ const funcs = {
             const option = document.createElement('option');
             option.value = priors[i];
             option.innerHTML = priors[i];
-            //option.setAttribute('selected','');
+            option.setAttribute('selected','');
             select.appendChild(option);
         }
 

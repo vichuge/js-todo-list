@@ -90,8 +90,14 @@ const updateTask = (project, titleProject, list = 'default') => {
 
     titleEdit.value = myTask.title;
     descEdit.value = myTask.desc;
-    dateEdit.value = new Date();
-    console.log(dateEdit.value);
+    dateEdit = new Date();
+
+    console.log(dateEdit.getDate());
+
+   
+    priorEdit.value = myTask.priority;
+    console.log(priorEdit.value);
+
     //dateEdit.value = myTask.date;
     // ( list === 'default') ? lists.createTodoList():lists.createTodoList(project);
 }
