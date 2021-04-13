@@ -69,10 +69,10 @@ const funcs = {
         lists.createProjectsList(projects);
         lists.createTodoList();
     },
-    editTask() {
+    editTask(myTask, myProject) {
         const title = document.getElementById('titleEdit').value;
         const description = document.getElementById('descriptionEdit').value;
-        const dueDate = document.getElementById('dateEdit').value;
+        const dueDate = new Date(document.getElementById('dateEdit').value);
         const priority = document.getElementById('prioritySelectEdit').value;
 
         const errors = document.getElementById('error');
@@ -90,19 +90,14 @@ const funcs = {
             return;
         }
 
-        const allProjects = allProjectsFunc();
-        const elem = new Task(title, description, dueDate, priority);
-        let project = '';
-        for (let i = 0; i < allProjects.list.length; i += 1) {
-            if (allProjects.list[i].title === projectName) {
-                project = allProjects.list[i];
-                allProjects.list[i].addElement(elem);
-            }
-
-        }
-        lists.createTodoList(project);
-        emptyInputs();
-        closeModal();
+        myTask.title = title;
+        myTask.description = description;
+        myTask.date = dueDate;
+        myTask.priority = priority;
+        emptyInputsEdit();
+        closeModalEdit();
+        lists.createTodoList(myProject);
+        console.log(myTask);
     },
     buildModal() {
 
@@ -133,7 +128,7 @@ const funcs = {
         button2.classList.add('btn-close');
         button2.setAttribute("data-bs-dismiss", "modal");
         button2.setAttribute("aria-label", "Close");
-        button2.setAttribute("id", "close");
+        button2.id = 'close';
 
         div8.appendChild(h5);
         div8.appendChild(button2);
@@ -337,7 +332,7 @@ const funcs = {
         button2.classList.add('btn-close');
         button2.setAttribute("data-bs-dismiss", "modal");
         button2.setAttribute("aria-label", "Close");
-        button2.setAttribute("id", "close");
+        button2.setAttribute("id", "closeEdit");
 
         div8.appendChild(h5);
         div8.appendChild(button2);
@@ -443,7 +438,7 @@ const funcs = {
         select.setAttribute("id", "prioritySelectEdit");
 
         const priors = ['Low', 'Medium', 'High'];
-        for (let i=0; i<priors.length; i += 1) {
+        for (let i = 0; i < priors.length; i += 1) {
             const option = document.createElement('option');
             option.value = priors[i];
             option.innerHTML = priors[i];
@@ -482,7 +477,7 @@ const funcs = {
         button4.id = "testProject"
         button4.innerHTML = "Edit Task"
         button4.setAttribute("id", "updateTask");
-        button4.addEventListener('click', () => { editedTask()});
+        //button4.addEventListener('click', () => { editedTask()});
 
         div19.appendChild(button3);
         div19.appendChild(button4);
@@ -507,6 +502,13 @@ function emptyInputs() {
     document.getElementById('description2').value = '';
 }
 
+function emptyInputsEdit() {
+    document.getElementById('titleEdit').value = '';
+    document.getElementById('descriptionEdit').value = '';
+    document.getElementById('dateEdit').value = '';
+    document.getElementById('prioritySelectEdit').value = '';
+}
+
 const editedTask = () => {
 
 
@@ -514,7 +516,7 @@ const editedTask = () => {
     const description = document.getElementById('descriptionEdit').value;
     const dueDate = new Date(document.getElementById('dateEdit').value);
     const priority = document.getElementById('prioritySelectEdit').value;
-    
+
 
     console.log(title);
     console.log(description);
@@ -548,6 +550,10 @@ const closeModal = () => {
 
 const closeModal2 = () => {
     document.getElementById('close2').click();
+}
+
+const closeModalEdit = () => {
+    document.getElementById('closeEdit').click();
 }
 
 export default funcs;
