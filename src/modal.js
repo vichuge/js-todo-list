@@ -4,10 +4,10 @@ import Project from './Project.js';
 import allProjectsFunc from "./index";
 
 const funcs = {
-    addTask(projects) {
+    addTask(allProjects) {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-        const dueDate = new Date(document.getElementById('dueDate').value);
+        const dueDate = document.getElementById('dueDate').value;
         const priority = document.getElementById('prioritySelect').value;
         const projectName = document.getElementById('projectsSelect').value;
 
@@ -26,13 +26,14 @@ const funcs = {
             return;
         }
 
-        const allProjects = allProjectsFunc();
+        //const allProjects = allProjectsFunc();
+        console.log(allProjects);
         const elem = new Task(title, description, dueDate, priority);
         let project = '';
         for (let i = 0; i < allProjects.list.length; i += 1) {
             if (allProjects.list[i].title === projectName) {
                 project = allProjects.list[i];
-                allProjects.list[i].addElement(elem);
+                project.addElement(elem);
             }
 
         }
@@ -62,11 +63,14 @@ const funcs = {
         select2.appendChild(option);
 
         const elem = new Project(title, description);
-        projects.push(elem);
-        console.log(projects);
+        projects.list.push(elem);
+
+        localStorage.removeItem('myProjects');
+        localStorage.setItem('myProjects', JSON.stringify(projects));
+
         emptyInputs();
         closeModal2();
-        lists.createProjectsList(projects);
+        lists.createProjectsList(JSON.parse(localStorage.getItem('myProjects')).list);
         lists.createTodoList();
     },
     editTask(myTask, nextList) {
@@ -231,17 +235,17 @@ const funcs = {
         select.classList.add("form-select");
         select.setAttribute("aria-label", "Default select example");
         select.setAttribute("id", "prioritySelect");
-
+        
         const option = document.createElement('option');
-        option.value = "low";
+        option.value = "Low";
         option.innerHTML = "Low";
 
         const option1 = document.createElement('option');
-        option1.value = "medium";
+        option1.value = "Medium";
         option1.innerHTML = "Medium";
 
         const option2 = document.createElement('option');
-        option2.value = "high";
+        option2.value = "High";
         option2.innerHTML = "High";
 
         select.appendChild(option);
