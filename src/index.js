@@ -37,8 +37,6 @@ const init = () => {
   let createProject = document.getElementById('createProject');
   createProject.addEventListener('click', () => { funcs.addProject(allProjects.list) });
 
-  // let updateTask = document.getElementById('updateTask');
-  // updateTask.addEventListener('click', () => { funcs.editedTask(allProjects.list); });
 }
 
 export default allProjectsFunc;

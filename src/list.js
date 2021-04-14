@@ -74,6 +74,9 @@ const changeCheck = (project, titleProject) => {
 }
 
 const updateTask = (project, titleTask, list = 'default') => {
+    /*console.log('----------------------');
+    console.log(project);
+    console.log(titleTask);*/
     let myProject = '';
     let myTask = '';
     for (let i = 0; i < project.list.length; i += 1) {
@@ -82,6 +85,9 @@ const updateTask = (project, titleTask, list = 'default') => {
             myProject = project;
         }
     }
+    /*console.log('---');
+    console.log(myTask);
+    console.log(myProject);*/
     const titleEdit = document.getElementById('titleEdit');
     const descEdit = document.getElementById('descriptionEdit');
     const dateEdit = document.getElementById('dateEdit');
@@ -92,14 +98,15 @@ const updateTask = (project, titleTask, list = 'default') => {
     descEdit.value = myTask.desc;
     const constructDate = `${myTask.date.getFullYear()}-${("0" + myTask.date.getMonth()).slice(-2)}-${("0" + myTask.date.getDay()).slice(-2)}`;
     dateEdit.value = constructDate;
-    
 
+    priorEdit[0].removeAttribute('selected');
+    priorEdit[1].removeAttribute('selected');
+    priorEdit[2].removeAttribute('selected');
     for (let i=0; i < priorEdit.length; i+=1) {
         (myTask.priority === priorEdit[i].value) ? priorEdit[i].setAttribute('selected','') : '';
-        console.log(myTask.priority);
     }
 
-    const btnEdit = document.getElementById('updateTask');
+    const btnEdit = document.getElementById('updateTaskModal');
     btnEdit.addEventListener('click', () => { funcs.editTask(myTask, list) });
 }
 
@@ -139,7 +146,6 @@ const runList = (todoTask, tasks, nextList) => {
         button2.classList.add('btn');
         button2.classList.add('btn-primary');
         button2.type = 'button';
-        button2.id = 'editTask';
         button2.innerHTML = 'Edit';
         button2.setAttribute('data-bs-toggle', 'modal');
         button2.setAttribute('data-bs-target', '#exampleModal3');

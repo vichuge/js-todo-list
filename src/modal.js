@@ -69,17 +69,18 @@ const funcs = {
         lists.createProjectsList(projects);
         lists.createTodoList();
     },
-    editTask(myTask, myProject) {
+    editTask(myTask, nextList) {
 
         const title = document.getElementById('titleEdit').value;
         const description = document.getElementById('descriptionEdit').value;
         const dueDate = new Date(document.getElementById('dateEdit').value);
         const priority = document.getElementById('prioritySelectEdit').value;
 
-        
+        console.log(title);
+        console.log(description);
         console.log(dueDate);
         console.log(priority);
-
+        console.log('---');
 
         const errors = document.getElementById('error');
         errors.innerHTML = '';
@@ -100,15 +101,10 @@ const funcs = {
         myTask.desc = description;
         myTask.date = dueDate;
         myTask.priority = priority;
-      
-        console.log(myTask.date);
-        console.log(myTask.priority);
-        console.log(myTask);
+
         emptyInputsEdit();
         closeModalEdit();
-        // console.log(myProject);
-        lists.createTodoList(myProject);
-        // console.log(myTask);
+        lists.createTodoList(nextList);
     },
     buildModal() {
 
@@ -485,9 +481,9 @@ const funcs = {
         button4.type = "button";
         button4.classList.add("btn");
         button4.classList.add("btn-primary");
-        button4.id = "testProject"
+        //button4.id = "testProject"
         button4.innerHTML = "Edit Task"
-        button4.setAttribute("id", "updateTask");
+        button4.id = "updateTaskModal";
         //button4.addEventListener('click', () => { editedTask()});
 
         div19.appendChild(button3);
@@ -517,7 +513,10 @@ function emptyInputsEdit() {
     document.getElementById('titleEdit').value = '';
     document.getElementById('descriptionEdit').value = '';
     document.getElementById('dateEdit').value = '';
-    document.getElementById('prioritySelectEdit').value = '';
+    /*const priorEdit = document.getElementById('prioritySelectEdit');
+    for (let i=0; i < priorEdit.length; i+=1) {
+        priorEdit[i].removeAttribute('selected');
+    }*/
 }
 
 const editedTask = () => {
