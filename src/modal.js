@@ -73,14 +73,14 @@ const funcs = {
 
         const title = document.getElementById('titleEdit').value;
         const description = document.getElementById('descriptionEdit').value;
-        const dueDate = new Date(document.getElementById('dateEdit').value);
+        const dueDate = document.getElementById('dateEdit').value;
         const priority = document.getElementById('prioritySelectEdit').value;
 
-        console.log(title);
+        /*console.log(title);
         console.log(description);
         console.log(dueDate);
         console.log(priority);
-        console.log('---');
+        console.log('---');*/
 
         const errors = document.getElementById('error');
         errors.innerHTML = '';

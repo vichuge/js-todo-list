@@ -1,5 +1,6 @@
 import allProjectsFunc from "./index";
 import funcs from "./modal";
+import Task from "./Task";
 
 const lists = {
     createProjectsList(list) {
@@ -73,16 +74,19 @@ const changeCheck = (project, titleProject) => {
     }
 }
 
+//let myProject = '';
+let myTask = '';
+let listOut = '';
 const updateTask = (project, titleTask, list = 'default') => {
     /*console.log('----------------------');
     console.log(project);
     console.log(titleTask);*/
-    let myProject = '';
-    let myTask = '';
+    
     for (let i = 0; i < project.list.length; i += 1) {
         if (titleTask === project.list[i].title) {
             myTask = project.list[i];
-            myProject = project;
+            //this.myProject = project;
+            listOut = list;
         }
     }
     /*console.log('---');
@@ -96,8 +100,8 @@ const updateTask = (project, titleTask, list = 'default') => {
 
     titleEdit.value = myTask.title;
     descEdit.value = myTask.desc;
-    const constructDate = `${myTask.date.getFullYear()}-${("0" + myTask.date.getMonth()).slice(-2)}-${("0" + myTask.date.getDay()).slice(-2)}`;
-    dateEdit.value = constructDate;
+    dateEdit.value = myTask.date;
+    //console.log(myTask.date);
 
     priorEdit[0].removeAttribute('selected');
     priorEdit[1].removeAttribute('selected');
@@ -107,7 +111,11 @@ const updateTask = (project, titleTask, list = 'default') => {
     }
 
     const btnEdit = document.getElementById('updateTaskModal');
-    btnEdit.addEventListener('click', () => { funcs.editTask(myTask, list) });
+    btnEdit.addEventListener('click', runEdit );
+}
+
+const runEdit = () => {
+    funcs.editTask(myTask, listOut);
 }
 
 const runList = (todoTask, tasks, nextList) => {
@@ -139,8 +147,9 @@ const runList = (todoTask, tasks, nextList) => {
         p.innerText = task.desc;
 
         const small = document.createElement('small');
-        let date = new Date(task.date)
-        small.innerText = `${date.getFullYear()}/${("0" + date.getMonth()).slice(-2)}/${("0" + date.getDay()).slice(-2)}`;
+        //let date = new Date(task.date)
+        //small.innerText = `${date.getFullYear()}/${("0" + date.getMonth()).slice(-2)}/${("0" + date.getDay()).slice(-2)}`;
+        small.innerHTML = task.date;
 
         const button2 = document.createElement('button');
         button2.classList.add('btn');
