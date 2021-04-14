@@ -92,9 +92,11 @@ const updateTask = (project, titleTask, list = 'default') => {
     descEdit.value = myTask.desc;
     const constructDate = `${myTask.date.getFullYear()}-${("0" + myTask.date.getMonth()).slice(-2)}-${("0" + myTask.date.getDay()).slice(-2)}`;
     dateEdit.value = constructDate;
+    
 
     for (let i=0; i < priorEdit.length; i+=1) {
         (myTask.priority === priorEdit[i].value) ? priorEdit[i].setAttribute('selected','') : '';
+        console.log(myTask.priority);
     }
 
     const btnEdit = document.getElementById('updateTask');

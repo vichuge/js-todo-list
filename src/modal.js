@@ -70,10 +70,16 @@ const funcs = {
         lists.createTodoList();
     },
     editTask(myTask, myProject) {
+
         const title = document.getElementById('titleEdit').value;
         const description = document.getElementById('descriptionEdit').value;
         const dueDate = new Date(document.getElementById('dateEdit').value);
         const priority = document.getElementById('prioritySelectEdit').value;
+
+        
+        console.log(dueDate);
+        console.log(priority);
+
 
         const errors = document.getElementById('error');
         errors.innerHTML = '';
@@ -91,13 +97,18 @@ const funcs = {
         }
 
         myTask.title = title;
-        myTask.description = description;
+        myTask.desc = description;
         myTask.date = dueDate;
         myTask.priority = priority;
+      
+        console.log(myTask.date);
+        console.log(myTask.priority);
+        console.log(myTask);
         emptyInputsEdit();
         closeModalEdit();
+        // console.log(myProject);
         lists.createTodoList(myProject);
-        console.log(myTask);
+        // console.log(myTask);
     },
     buildModal() {
 
