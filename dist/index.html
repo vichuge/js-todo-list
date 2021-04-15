@@ -22,134 +22,113 @@
         <div class="row mb-4">
           <div class="col-12">
             <h2>All Projects</h2>
-            <ul class="list-group" id="projectsList" >
-            </ul>
+            <ul class="list-group" id="projectsList"></ul>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <!-- Button trigger modal -->
-      <div class="row mb-3">
-        <div class="col-12">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            id="openModal"
-          >
-            Add a new task
-          </button>
-        </div>
-      </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  id="openModal"
+                >
+                  Add a new task
+                </button>
+              </div>
+            </div>
 
-      <div class="row mb-3">
-        <div class="col-12">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal2"
-          >
-            New project
-          </button>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-12">
-          <button
-            type="button"
-            class="btn btn-primary"
-            id="clearAll"
-          >
-            Clear all
-          </button>
-        </div>
-      </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal2"
+                >
+                  New project
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        
       </div>
       <div class="col-1">
         <div class="vl"></div>
       </div>
       <div class="col-8">
-        <div class="list mb-4" id="container">
-        </div>
+        <div class="list mb-4" id="container"></div>
       </div>
     </div>
-    
 
     <div class="container" id="modal"></div>
-    <div class="container" id="modal2"></div> 
+    <div class="container" id="modal2"></div>
 
-      <!-- Modal 2-->
-      <div
-        class="modal fade"
-        id="exampleModal2"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Enter the project information
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                id="close2"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-12">
-                  <p class="error2" id="error2"></p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 mb-2">
-                  <label for="title2">Title</label>
-                  <input type="text" name="title2" id="title2" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 mb-2">
-                  <label for="description2">Description</label>
-                  <textarea
-                    class="form-control"
-                    placeholder="Add description here"
-                    id="description2"
-                    name="description2"
-                  ></textarea>
-                </div>
+    <!-- Modal 2-->
+    <div
+      class="modal fade"
+      id="exampleModal2"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Enter the project information
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              id="close2"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <p class="error2" id="error2"></p>
               </div>
             </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                
-                type="button"
-                class="btn btn-primary"
-                id="createProject"
-              >
-                Add Project
-              </button>
+            <div class="row">
+              <div class="col-12 mb-2">
+                <label for="title2">Title</label>
+                <input type="text" name="title2" id="title2" />
+              </div>
             </div>
+            <div class="row">
+              <div class="col-12 mb-2">
+                <label for="description2">Description</label>
+                <textarea
+                  class="form-control"
+                  placeholder="Add description here"
+                  id="description2"
+                  name="description2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="createProject">
+              Add Project
+            </button>
           </div>
         </div>
       </div>
+    </div>
 
     <script src="main.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
@@ -166,6 +145,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     -->
-
   </body>
 </html>
