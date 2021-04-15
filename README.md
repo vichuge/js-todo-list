@@ -5,10 +5,6 @@
 
 ![screenshot](/screenshots/Screenshot_1.png)
 
-## Live Link Demo
-
-[Live Link Demo](https://vichuge.github.io/JsLibrary/)
-
 ## Built With
 
 - JavaScript
