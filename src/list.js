@@ -3,7 +3,8 @@ import funcs from "./modal";
 import Task from "./Task";
 
 const lists = {
-    createProjectsList(list) {
+    createProjectsList() {
+        const list = allProjectsFunc().list;
         let ul = document.getElementById('projectsList');
         ul.innerHTML = '';
         const li1 = document.createElement('li');
@@ -63,6 +64,9 @@ const deleteTask = (project, titleProject, list) => {
             project.list.splice(i, 1);
         }
     }
+    const allProjects = allProjectsFunc();
+    localStorage.removeItem('myProjects');
+    localStorage.setItem('myProjects', JSON.stringify(allProjects));
     (list === 'default') ? lists.createTodoList() : lists.createTodoList(project);
 }
 
@@ -72,6 +76,9 @@ const changeCheck = (project, titleProject) => {
             (project.list[i].check === true) ? project.list[i].check = false : project.list[i].check = true;
         }
     }
+    const allProjects = allProjectsFunc();
+    localStorage.removeItem('myProjects');
+    localStorage.setItem('myProjects', JSON.stringify(allProjects));
 }
 
 //let myProject = '';

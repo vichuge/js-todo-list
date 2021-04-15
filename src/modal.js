@@ -26,9 +26,14 @@ const funcs = {
             return;
         }
 
+        if (projectName === '') {
+            errors.innerHTML += 'Create a project first';
+            return;
+        }
+
         //const allProjects = allProjectsFunc();
         console.log(allProjects);
-        const elem = new Task(title, description, dueDate, priority);
+        const elem = new Task(title, description, dueDate, priority, false);
         let project = '';
         for (let i = 0; i < allProjects.list.length; i += 1) {
             if (allProjects.list[i].title === projectName) {
@@ -40,6 +45,8 @@ const funcs = {
         lists.createTodoList(project);
         emptyInputs();
         closeModal();
+        localStorage.removeItem('myProjects');
+        localStorage.setItem('myProjects', JSON.stringify(allProjects));
     },
     addProject(projects) {
         const title = document.getElementById('title2').value;
@@ -70,7 +77,7 @@ const funcs = {
 
         emptyInputs();
         closeModal2();
-        lists.createProjectsList(JSON.parse(localStorage.getItem('myProjects')).list);
+        lists.createProjectsList();
         lists.createTodoList();
     },
     editTask(myTask, nextList) {
@@ -109,6 +116,9 @@ const funcs = {
         emptyInputsEdit();
         closeModalEdit();
         lists.createTodoList(nextList);
+        const allProjects = allProjectsFunc();
+        localStorage.removeItem('myProjects');
+        localStorage.setItem('myProjects', JSON.stringify(allProjects));
     },
     buildModal() {
 
@@ -235,7 +245,7 @@ const funcs = {
         select.classList.add("form-select");
         select.setAttribute("aria-label", "Default select example");
         select.setAttribute("id", "prioritySelect");
-        
+
         const option = document.createElement('option');
         option.value = "Low";
         option.innerHTML = "Low";
@@ -553,7 +563,7 @@ const editedTask = () => {
     }
 
     const allProjects = allProjectsFunc();
-    const elem = new Task(title, description, dueDate, priority);
+    const elem = new Task(title, description, dueDate, priority, false);
     emptyInputs();
     closeModal();
 }
