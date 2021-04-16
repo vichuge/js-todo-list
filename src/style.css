@@ -1,0 +1,33 @@
+.list-group-item {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+
+.bgreen {
+  background-color: green;
+}
+
+.byellow {
+  background-color: #ffc107;
+}
+
+.bred {
+  background-color: red;
+}
+
+.twhite {
+  color: white;
+}
+
+.form-select {
+  width: auto;
+}
+
+#liclickable {
+  cursor: pointer;
+}
+
+#error {
+  color: red;
+}
