@@ -27,11 +27,13 @@
 - double click index.html
 - Here comes the website on the local machine.
 
+### Test project using Jest
 
-
-To make any change,
-
-- Open related file by using text editor.
+- Open terminal
+- Clone the repo with ```git clone https://github.com/vichuge/js-todo-list.git```
+- ```cd js-todo-list```
+- use ``` npm install```
+- use ``` npm test ```
 
 ## Authors
 
@@ -54,7 +56,6 @@ To make any change,
 Contributions, issues and feature requests are welcome! 
 
 
-
 ## Show your support
 
 Give a ⭐️ if you like this project!
@@ -63,7 +64,6 @@ Give a ⭐️ if you like this project!
 
 - Project originally taken from The Odin Project
 - Project inspired by Microverse Program
-
 
 
 ## 📝 License
