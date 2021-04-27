@@ -238,7 +238,6 @@ const funcs = {
     div17.appendChild(div18);
     div9.appendChild(div17);
 
-
     const div31 = document.createElement('div');
     div31.classList.add('row');
 
@@ -267,7 +266,6 @@ const funcs = {
     const div19 = document.createElement('div');
     div19.classList.add('modal-footer');
 
-
     const button3 = document.createElement('button');
     button3.type = 'button';
     button3.classList.add('btn');
@@ -285,7 +283,6 @@ const funcs = {
 
     div19.appendChild(button3);
     div19.appendChild(button4);
-
 
     div7.appendChild(div8);
     div7.appendChild(div9);
@@ -318,7 +315,6 @@ const funcs = {
     h5.classList.add('modal-title');
     h5.innerHTML = 'Edit the task information';
 
-
     const button2 = document.createElement('button');
     button2.type = 'button';
     button2.classList.add('btn-close');
@@ -328,7 +324,6 @@ const funcs = {
 
     div8.appendChild(h5);
     div8.appendChild(button2);
-
 
     const div9 = document.createElement('div');
     div9.classList.add('modal-body');
@@ -347,14 +342,12 @@ const funcs = {
     div10.appendChild(div11);
     div9.appendChild(div10);
 
-
     const div12 = document.createElement('div');
     div12.classList.add('row');
 
     const div21 = document.createElement('div');
     div21.classList.add('col-12');
     div21.classList.add('mb-2');
-
 
     const label1 = document.createElement('label');
     label1.htmlFor = 'title';
@@ -365,12 +358,10 @@ const funcs = {
     input2.id = 'titleEdit';
     input2.name = 'title';
 
-
     div21.appendChild(label1);
     div21.appendChild(input2);
     div12.appendChild(div21);
     div9.appendChild(div12);
-
 
     const div13 = document.createElement('div');
     div13.classList.add('row');
@@ -388,7 +379,6 @@ const funcs = {
     textarea1.id = 'descriptionEdit';
     textarea1.setAttribute('placeholder', 'Add description here');
     textarea1.name = 'description';
-
 
     div14.appendChild(label2);
     div14.appendChild(textarea1);
