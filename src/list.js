@@ -223,5 +223,4 @@ const runList = (todoTask, tasks, nextList) => {
   nothing(mappy);
 };
 
-
 export default lists;
