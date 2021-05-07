@@ -5,12 +5,18 @@
 
 ![screenshot](/screenshots/Screenshot_1.png)
 
+## Live demo
+
+[Live demo here!](https://vichuge.github.io/js-todo-list/)
+
 ## Built With
 
 - JavaScript
 - HTML5
 - Bootstrap
 - CSS3
+- npm
+- webpack
 
 ### Prerequisites
 
